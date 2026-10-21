@@ -1,0 +1,2236 @@
+{
+ "agent-cursor": [
+  {
+   "default": "Agent",
+   "id": "agent_name",
+   "label": "Agent name",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Reading the page,Opening Settings,Turning on backups,Done",
+   "description": "Comma-separated: a reading line, one line per target, then a done line.",
+   "id": "steps",
+   "label": "Status steps",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "25,47;76,30",
+   "description": "Semicolon-separated x,y points in percent of the frame.",
+   "id": "targets",
+   "label": "Click targets",
+   "role": "layout",
+   "type": "string"
+  },
+  {
+   "default": "#0a84ff",
+   "id": "accent",
+   "label": "Accent",
+   "role": "style",
+   "type": "color"
+  }
+ ],
+ "ai-chat-reveal": [
+  {
+   "default": "Assistant",
+   "description": "Name of the assistant answering in this mock chat. It belongs to the host product, never to the brand this video promotes.",
+   "id": "botName",
+   "label": "Assistant name",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "How do I turn my HTML into real video?",
+   "description": "The question typed on the keyboard and sent. Around 40 characters keeps the measured pacing.",
+   "id": "userMessage",
+   "label": "User message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "You do not need an editor. HyperFrames renders the HTML you already write into deterministic, pixel-perfect video.",
+   "description": "First streamed paragraph. It names the brand this video promotes and says what that brand does.",
+   "id": "answer1",
+   "label": "Answer paragraph 1",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "It is markup, not magic.",
+   "description": "Short second beat.",
+   "id": "answer2",
+   "label": "Answer paragraph 2",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "What you get out of the box:",
+   "description": "Lead-in to the list.",
+   "id": "answer3",
+   "label": "Answer paragraph 3",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "A catalog of motion primitives you install and own",
+   "description": "First list item.",
+   "id": "bullet1",
+   "label": "Bullet 1",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "GSAP timelines that seek to any frame",
+   "description": "Second list item.",
+   "id": "bullet2",
+   "label": "Bullet 2",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "4K renders from a single CLI command",
+   "description": "Third list item.",
+   "id": "bullet3",
+   "label": "Bullet 3",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "It's not magic.|It's HTML.",
+   "description": "Closing card headline. A | breaks the line.",
+   "id": "ecHeadline",
+   "label": "End-card headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Open-source video rendering \u2014 write HTML, ship pixel-perfect video.",
+   "description": "Positioning sentence of the brand this video promotes, on the closing card.",
+   "id": "ecSub",
+   "label": "End-card subline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Try HyperFrames",
+   "description": "Closing-card button label, which names the brand this video promotes. Use the real name of that brand.",
+   "id": "ecCta",
+   "label": "End-card CTA",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "HYPERFRAMES.HEYGEN.COM",
+   "description": "Domain of the brand this video promotes, letter-spaced at the very bottom. Use the real domain.",
+   "id": "ecFooter",
+   "label": "End-card footer",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "assets/hyperframes-logo-white.svg",
+   "description": "Transparent mark of the brand this video promotes, in the closing-card header.",
+   "id": "brandLogo",
+   "label": "Brand logo",
+   "role": "content",
+   "type": "image"
+  }
+ ],
+ "animated-bar-chart": [],
+ "apple-money-count": [],
+ "bar-chart-race": [
+  {
+   "default": "Streaming Subscribers by Service",
+   "id": "title",
+   "label": "Title",
+   "type": "string"
+  },
+  {
+   "default": "Ranked by reported subscribers",
+   "id": "subtitle",
+   "label": "Subtitle",
+   "type": "string"
+  },
+  {
+   "default": "2019, 2020, 2021, 2022, 2023, 2024",
+   "id": "periods",
+   "label": "Period labels (comma separated)",
+   "type": "string"
+  },
+  {
+   "default": "Northwind: 42, 58, 71, 96, 118, 131\nCobalt: 30, 46, 68, 92, 126, 168\nFerry: 55, 62, 66, 70, 74, 79\nMarlow: 18, 33, 52, 61, 88, 104\nAster: 25, 28, 44, 58, 63, 72\nPell: 12, 20, 39, 47, 55, 90\nQuill: 8, 11, 15, 24, 40, 66\nDunmore: 35, 37, 38, 40, 42, 44",
+   "id": "series",
+   "label": "Series (one per line: Name: v1, v2, ...)",
+   "type": "string"
+  },
+  {
+   "default": 6,
+   "id": "barCount",
+   "label": "Bars shown",
+   "type": "number"
+  },
+  {
+   "default": 2,
+   "id": "periodDuration",
+   "label": "Seconds per period",
+   "type": "number"
+  },
+  {
+   "default": "$",
+   "id": "valuePrefix",
+   "label": "Value prefix",
+   "type": "string"
+  },
+  {
+   "default": "M",
+   "id": "valueSuffix",
+   "label": "Value suffix",
+   "type": "string"
+  },
+  {
+   "default": 0,
+   "id": "valueDecimals",
+   "label": "Value decimals",
+   "type": "number"
+  },
+  {
+   "default": "#c8452d",
+   "id": "accent",
+   "label": "Leader accent",
+   "type": "color"
+  }
+ ],
+ "before-after-wipe": [
+  {
+   "default": "Before",
+   "description": "Chip shown on the base before panel. Blank hides the chip.",
+   "id": "label_a",
+   "label": "Before label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "After",
+   "description": "Chip shown on the revealed after panel. Blank hides the chip.",
+   "id": "label_b",
+   "label": "After label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 50,
+   "description": "Divider resting position after the wipe lands.",
+   "id": "rest_split",
+   "label": "Resting split",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 0.25,
+   "description": "Seconds after mount start when the wipe begins.",
+   "id": "wipe_at",
+   "label": "Wipe start",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Divider handle and after chip color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Outgoing transition. None holds the final comparison frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "browser-device-stage": [
+  {
+   "default": "browser",
+   "description": "Device frame drawn around the screen slot.",
+   "id": "chrome",
+   "label": "Chrome",
+   "options": [
+    "Browser",
+    "Window",
+    "Phone"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "app.example.com",
+   "description": "Address pill text (browser) or title bar text (window).",
+   "id": "title",
+   "label": "Title",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 0,
+   "description": "Seconds from mount start to swap to the second screen. 0 disables the swap.",
+   "id": "swap_at",
+   "label": "Swap at",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Token the skeleton accent elements ride.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. None holds the final frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "camcorder-hud": [],
+ "camera-shake": [
+  {
+   "default": "handheld-normal-mild",
+   "id": "shakeProfile",
+   "label": "Shake profile",
+   "options": [
+    "Handheld - normal lens, mild",
+    "Handheld - normal lens, strong",
+    "Handheld - normal lens, extreme",
+    "Handheld - wide angle, mild",
+    "Handheld - wide angle, strong",
+    "Handheld - telephoto, mild",
+    "Handheld - telephoto, strong",
+    "Rig - 6D shake (engine buzz)",
+    "Rig - 6D wobble"
+   ],
+   "type": "enum"
+  },
+  {
+   "default": 1,
+   "id": "shakeIntensity",
+   "label": "Intensity multiplier",
+   "type": "number"
+  },
+  {
+   "default": 1,
+   "id": "shakeFrequency",
+   "label": "Frequency multiplier",
+   "type": "number"
+  },
+  {
+   "default": true,
+   "id": "shakeRotation",
+   "label": "Include rotation (roll + tilt/pan)",
+   "type": "boolean"
+  }
+ ],
+ "caption-editorial-emphasis": [],
+ "caption-emoji-pop": [],
+ "caption-highlight": [],
+ "caption-kinetic-slam": [],
+ "caption-pill-karaoke": [],
+ "caption-weight-shift": [],
+ "chart-story": [
+  {
+   "default": "bars",
+   "description": "Chart form the data builds into.",
+   "id": "type",
+   "label": "Chart type",
+   "options": [
+    "Bars",
+    "Line",
+    "Donut",
+    "Progress"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "12, 28, 45, 64",
+   "description": "Comma-separated numbers; the chart lands exactly on these values.",
+   "id": "data",
+   "label": "Data",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Q1, Q2, Q3, Q4",
+   "description": "Comma-separated labels, one per datum.",
+   "id": "labels",
+   "label": "Labels",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 3,
+   "description": "Index of the datum that takes the accent and the value callout. Clamped to the data range.",
+   "id": "emphasize",
+   "label": "Emphasize",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "%",
+   "description": "Suffix appended to every displayed value.",
+   "id": "unit",
+   "label": "Unit",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Contract color used by the emphasized datum and its callout.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Proof stats end on the still hold, so the default is none.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "chat-thread": [
+  {
+   "default": "Rachel",
+   "description": "Name in the thread header; the avatar shows its first letter.",
+   "id": "contact",
+   "label": "Contact",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 12,
+   "description": "Count in the back-button badge. 0 hides it.",
+   "id": "unread",
+   "label": "Unread badge",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "recv:what r u using for the launch video??|sent:wait look \ud83d\udc40|card:HyperFrames \u2014 Write HTML, render pixel-perfect video~hyperframes.heygen.com|recv:OMG IT'S HTML|emoji:\ud83e\udd2f\ud83e\udd2f\ud83e\udd2f|sent:renders in 4K. no editor",
+   "description": "Pipe-separated thread. Each entry picks its type by prefix: recv: or sent: for a text bubble, emoji: for a large emoji row, img for a media placeholder, card:Title~domain for a link card. Example: recv:hey|sent:look \ud83d\udc40|card:HyperFrames~hyperframes.heygen.com|emoji:\ud83e\udd2f\ud83e\udd2f\ud83e\udd2f",
+   "id": "messages",
+   "label": "Messages",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 1.7,
+   "description": "Seconds between message arrivals.",
+   "id": "beat",
+   "label": "Beat",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "on",
+   "description": "Show the three-dot indicator before received messages.",
+   "id": "dots",
+   "label": "Typing dots",
+   "options": [
+    "On",
+    "Off"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": "on",
+   "description": "Show Delivered under the last sent bubble, as iMessage does.",
+   "id": "receipt",
+   "label": "Delivered receipt",
+   "options": [
+    "On",
+    "Off"
+   ],
+   "role": "content",
+   "type": "enum"
+  }
+ ],
+ "claude-exchange": [
+  {
+   "default": "What's the best tool for ai avatars?",
+   "description": "Prompt typed into Claude; keep close to the original length.",
+   "id": "prompt",
+   "label": "User prompt",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Weighing accuracy against current market\u2026",
+   "description": "Reasoning-status copy for the subject matter.",
+   "id": "thinking",
+   "label": "Thinking line",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "I'll search for the current state of this space since AI avatar tools move fast.",
+   "description": "Sentence introducing the search step.",
+   "id": "lead",
+   "label": "Search lead",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "best AI avatar video generator 2026",
+   "description": "Visible search query.",
+   "id": "search",
+   "label": "Search query",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "It depends on what you're making, but the field has consolidated fast and one platform now covers most of it.",
+   "description": "First answer paragraph.",
+   "id": "answer1",
+   "label": "Answer paragraph 1",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**HeyGen** is where most teams land. Independent testing, not just vendor blogs, puts **Avatar IV** highest for talking-head realism, with facial micro-expressions and gesture control that hold up at a full-screen crop {HeyGen}. It also has the deepest enterprise adoption of the group, including a large share of the Fortune 100, which matters if you need the same presenter on brand across a year of campaigns.",
+   "description": "Second answer paragraph, where the brand this video promotes is named as the recommended pick. Keep any evidence claim to what that brand publishes.",
+   "id": "answer2",
+   "label": "Answer paragraph 2",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "By use case, the pieces shake out roughly like this:",
+   "description": "Lead-in to the use-case list.",
+   "id": "answer3",
+   "label": "Answer paragraph 3",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**Marketing / hyper-realistic talking heads** \u2192 Avatar IV",
+   "description": "First use-case bullet, naming a product of the brand this video promotes.",
+   "id": "answer4",
+   "label": "Answer bullet 1",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**Enterprise training** \u2192 Video Translate for every locale",
+   "description": "Second use-case bullet, naming a product of the brand this video promotes.",
+   "id": "answer5",
+   "label": "Answer bullet 2",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**UGC-style performance ads** \u2192 Instant Avatar from one selfie, then batch the variants",
+   "description": "Third use-case bullet, naming a product of the brand this video promotes.",
+   "id": "answer6",
+   "label": "Answer bullet 3",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**Real-time conversational / interactive** \u2192 Interactive Avatar",
+   "description": "Fourth use-case bullet, naming a product of the brand this video promotes.",
+   "id": "answer7",
+   "label": "Answer bullet 4",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "**Custom digital twin from a selfie** \u2192 Instant Avatar in about five minutes",
+   "description": "Fifth use-case bullet, naming a product of the brand this video promotes.",
+   "id": "answer8",
+   "label": "Answer bullet 5",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "One distinction worth keeping in mind: a dedicated avatar platform optimizes the whole presenter workflow \u2014 script, voice, lip sync, translation, brand kit \u2014 whereas a general video model gives you cinematic scenes but takes far more skill to land the same person on camera twice.",
+   "description": "Product-category distinction paragraph.",
+   "id": "answer9",
+   "label": "Answer paragraph 4",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Given your day job you probably have a sharper read than these roundups on where HeyGen actually leads versus where the reviews are being generous. Is this for a specific project, or comparing for positioning?",
+   "description": "Closing question paragraph.",
+   "id": "answer10",
+   "label": "Answer paragraph 5",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "comparison-split": [
+  {
+   "default": 50,
+   "description": "Target resting position of the comparison divider.",
+   "id": "split",
+   "label": "Split position",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "horizontal",
+   "description": "Axis and direction used by the comparison wipe.",
+   "id": "orientation",
+   "label": "Orientation",
+   "options": [
+    "Horizontal",
+    "Vertical"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "Before",
+   "description": "Caption shown on the base before panel.",
+   "id": "labelA",
+   "label": "Before label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "After",
+   "description": "Caption shown on the revealed after panel.",
+   "id": "labelB",
+   "label": "After label",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "conic-progress-ring": [
+  {
+   "default": 100,
+   "description": "Target angular fill from 0 to 100.",
+   "id": "progress",
+   "label": "Progress",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 12,
+   "description": "Ring stroke thickness as a percent of the ring radius.",
+   "id": "thickness",
+   "label": "Thickness",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "100",
+   "description": "Numeric target shown in the center and counted in sync with the fill.",
+   "id": "label",
+   "label": "Center label",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "count-up": [
+  {
+   "default": 0,
+   "description": "First value shown by the count.",
+   "id": "start",
+   "label": "Start value",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 100,
+   "description": "Final value where the count lands.",
+   "id": "end",
+   "label": "End value",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Optional text shown before the value.",
+   "id": "prefix",
+   "label": "Prefix",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "%",
+   "description": "Optional text shown after the value.",
+   "id": "suffix",
+   "label": "Suffix",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color used by the count.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": false,
+   "description": "Optional soft accent glow under the count. Off by default.",
+   "id": "glow",
+   "label": "Glow",
+   "role": "style",
+   "type": "boolean"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the landed value holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "cta-close": [
+  {
+   "default": "Make it happen",
+   "description": "Two to four word action that closes the film.",
+   "id": "action_line",
+   "label": "Action line",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Start now",
+   "description": "Text displayed inside the single CTA capsule.",
+   "id": "button_label",
+   "label": "Button label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Contract color used by the CTA capsule.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the lockup holds until the frame cuts (this primitive closes films).",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "cursor-zoom-follow": [
+  {
+   "default": "",
+   "description": "Your own screen capture. Leave empty for the built-in dashboard.",
+   "id": "image",
+   "label": "Screenshot",
+   "role": "content",
+   "type": "image"
+  },
+  {
+   "default": 1.8,
+   "id": "zoom",
+   "label": "Zoom",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": 68.5,
+   "id": "click1_x",
+   "label": "Click 1 X",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 7.5,
+   "id": "click1_y",
+   "label": "Click 1 Y",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 50,
+   "id": "click2_x",
+   "label": "Click 2 X",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 48.5,
+   "id": "click2_y",
+   "label": "Click 2 Y",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 90.5,
+   "id": "click3_x",
+   "label": "Click 3 X",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 7.5,
+   "id": "click3_y",
+   "label": "Click 3 Y",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "#0a84ff",
+   "id": "accent",
+   "label": "Ripple",
+   "role": "style",
+   "type": "color"
+  }
+ ],
+ "data-chart": [],
+ "decline-chart": [
+  {
+   "default": "Retention",
+   "description": "Label shown above the declining value.",
+   "id": "label",
+   "label": "Metric label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 82,
+   "description": "Metric value at the start of the decline.",
+   "id": "start_value",
+   "label": "Start value",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 34,
+   "description": "Metric value at the bottom of the decline.",
+   "id": "end_value",
+   "label": "End value",
+   "role": "content",
+   "type": "number"
+  }
+ ],
+ "headline-slam": [
+  {
+   "default": "Ship it today",
+   "description": "Text displayed as the headline.",
+   "id": "text",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 1,
+   "description": "Zero-based word index to color. Out of range leaves the headline unaccented.",
+   "id": "accent_word_index",
+   "label": "Accent word index",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Color applied to the selected word.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": true,
+   "description": "Drop shadow cast under the headline. On by default; set false for a flat matte look.",
+   "id": "shadow",
+   "label": "Shadow",
+   "role": "style",
+   "type": "boolean"
+  }
+ ],
+ "heatmap": [],
+ "hw-arrow": [],
+ "hw-callout-circle": [],
+ "hw-underline": [],
+ "inline-highlight": [
+  {
+   "default": "yellow",
+   "description": "Marker colour. Green, blue and violet ride --brand, --accent and --accent-2.",
+   "id": "tint",
+   "label": "Tint",
+   "options": [
+    "Yellow",
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Height of the marker band behind the text, as a share of the font size.",
+   "id": "thickness",
+   "label": "Thickness",
+   "options": [
+    "Thin",
+    "Standard",
+    "Thick"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "left",
+   "description": "Edge the marker grows out of as the scale variable runs from 0 to 1.",
+   "id": "origin",
+   "label": "Origin",
+   "options": [
+    "Left",
+    "Right",
+    "Center"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "kinetic-type-swap": [
+  {
+   "default": "Ship",
+   "description": "Fixed sentence text before the rolling word slot.",
+   "id": "prefix",
+   "label": "Prefix",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "faster,smarter,together",
+   "description": "Comma-separated words shown in the rolling slot.",
+   "id": "options",
+   "label": "Options",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "",
+   "description": "Fixed sentence text after the rolling word slot.",
+   "id": "suffix",
+   "label": "Suffix",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds (from mount start) for each word swap. Empty keeps the authored even spread.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color used by the rolling word slot.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the sentence holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "logo-wall": [
+  {
+   "default": 3,
+   "description": "Number of logo rows in the wall.",
+   "id": "rows",
+   "label": "Rows",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 5,
+   "description": "Number of logo columns in the wall.",
+   "id": "cols",
+   "label": "Columns",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 45,
+   "description": "Delay between consecutive logo cell entrances.",
+   "id": "stagger",
+   "label": "Stagger",
+   "role": "motion",
+   "type": "number"
+  }
+ ],
+ "lt-kicker-name": [],
+ "marker-checklist-card": [
+  {
+   "default": "THE POWER",
+   "description": "First marker line.",
+   "id": "top",
+   "label": "Headline top",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "OF",
+   "description": "Small connecting word under the underline.",
+   "id": "mid",
+   "label": "Headline middle",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "ONE",
+   "description": "The word the marker ellipse draws around.",
+   "id": "circled",
+   "label": "Circled word",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "FILE",
+   "description": "The rest of the bottom line.",
+   "id": "rest",
+   "label": "Headline rest",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "WRITE",
+   "description": "Typewriter label of row 1.",
+   "id": "l1",
+   "label": "Row 1 label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "HTML",
+   "description": "Marker value of row 1.",
+   "id": "v1",
+   "label": "Row 1 value",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "RENDER",
+   "description": "Typewriter label of row 2.",
+   "id": "l2",
+   "label": "Row 2 label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "IN 4K",
+   "description": "Marker value of row 2.",
+   "id": "v2",
+   "label": "Row 2 value",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "SHIP",
+   "description": "Typewriter label of row 3.",
+   "id": "l3",
+   "label": "Row 3 label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "TODAY",
+   "description": "Marker value of row 3.",
+   "id": "v3",
+   "label": "Row 3 value",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "marker-highlight": [
+  {
+   "default": "Ship it with confidence",
+   "description": "Full line of display text.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "confidence",
+   "description": "First case-insensitive substring match in text receives the marker. Empty or unmatched draws no marker.",
+   "id": "emphasis_word",
+   "label": "Emphasis word",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "highlight",
+   "description": "Shape of the hand-drawn marker stroke.",
+   "id": "style",
+   "label": "Marker style",
+   "options": [
+    "Highlight",
+    "Circle",
+    "Underline",
+    "Scribble"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 0.9,
+   "description": "Second (from mount start) the marker starts drawing. Clamped so the stroke completes before any exit.",
+   "id": "draw_at",
+   "label": "Draw at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Marker ink color from the contract token map.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the lockup holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "mk-line-graph": [],
+ "mk-progress-stat": [],
+ "notification-pileup": [
+  {
+   "default": 7,
+   "description": "Number of notification cards in the final pile.",
+   "id": "count",
+   "label": "Notification count",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 1,
+   "description": "Pacing multiplier for the accelerating notification arrivals.",
+   "id": "speed",
+   "label": "Arrival speed",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "yes",
+   "description": "Show or hide unread count badges on the notification cards.",
+   "id": "showBadges",
+   "label": "Unread badges",
+   "options": [
+    "Show badges",
+    "Hide badges"
+   ],
+   "role": "content",
+   "type": "enum"
+  }
+ ],
+ "notification-stack": [
+  {
+   "default": "Build queued,Checks passed,Deploy live",
+   "description": "Comma-separated card titles (1 to 5 cards).",
+   "id": "titles",
+   "label": "Titles",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Pipeline started for main,All 42 checks green,Now serving version 2.4",
+   "description": "Comma-separated body lines matched to titles by index. Blank entries hide that body line.",
+   "id": "bodies",
+   "label": "Bodies",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": -1,
+   "description": "Index of the focus card in the titles list. -1 focuses the newest card (top of the stack).",
+   "id": "expand",
+   "label": "Expand",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated per-card arrival times in seconds. Blank entries use the default rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Accent token family used by the icon dots.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "How the stack leaves the frame. Default none: the hold ends the film.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "number-pop-in": [
+  {
+   "default": "5.7",
+   "description": "The number itself. Every character becomes its own span, so the stagger still lands character by character.",
+   "id": "value",
+   "label": "Value",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "k",
+   "description": "Small suffix printed after the number. Pass an empty string to drop it.",
+   "id": "unit",
+   "label": "Unit",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the offset the timeline drives, so the characters cover a shorter or longer run in the same time.",
+   "id": "lift",
+   "label": "Lift",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Number colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "number-wheel": [
+  {
+   "default": "single",
+   "description": "How many full 0 to 9 revolutions each column adds before it lands, which is how far the reel travels in the same time.",
+   "id": "spin",
+   "label": "Spin",
+   "options": [
+    "Single",
+    "Double",
+    "Triple"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Gap between the digit columns.",
+   "id": "spacing",
+   "label": "Spacing",
+   "options": [
+    "Tight",
+    "Standard",
+    "Wide"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "inherit",
+   "description": "Digit colour: inherit keeps the surrounding text colour, ink suits light frames, paper suits dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Inherit",
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "parallax-zoom": [],
+ "per-word-rise": [
+  {
+   "default": "WORDS IN MOTION",
+   "description": "Text whose words or characters rise into place.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "word",
+   "description": "Animate the text as words or individual characters.",
+   "id": "split",
+   "label": "Split",
+   "options": [
+    "Word",
+    "Character"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds (from mount start) for each unit landing. Empty keeps the authored cascade rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Contract accent token used for the text color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the line holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "push-in": [
+  {
+   "default": "Focus",
+   "description": "Text centered in the camera frame.",
+   "id": "text",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Final camera scale reached by the push.",
+   "id": "intensity",
+   "label": "Push intensity",
+   "options": [
+    "Subtle",
+    "Standard",
+    "Bold"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "rack-focus": [
+  {
+   "default": 1.2,
+   "id": "nearfocus",
+   "label": "Near focal distance",
+   "type": "number"
+  },
+  {
+   "default": 80,
+   "id": "farfocus",
+   "label": "Far focal distance",
+   "type": "number"
+  },
+  {
+   "default": 85,
+   "id": "focallength",
+   "label": "Focal length",
+   "type": "number"
+  },
+  {
+   "default": 1.8,
+   "id": "aperture",
+   "label": "Aperture (f-number)",
+   "type": "number"
+  },
+  {
+   "default": 6,
+   "id": "blades",
+   "label": "Aperture blades (bokeh shape)",
+   "type": "number"
+  },
+  {
+   "default": 0.62,
+   "id": "catseye",
+   "label": "Cat eye clipping at the corners",
+   "type": "number"
+  },
+  {
+   "default": 1.2,
+   "id": "pullstart",
+   "label": "Pull start",
+   "type": "number"
+  },
+  {
+   "default": 3.2,
+   "id": "pullduration",
+   "label": "Pull duration",
+   "type": "number"
+  },
+  {
+   "default": "power2.inOut",
+   "id": "pullease",
+   "label": "Pull easing (GSAP ease)",
+   "type": "string"
+  },
+  {
+   "default": 1,
+   "id": "bokeh",
+   "label": "Bokeh exposure",
+   "type": "number"
+  },
+  {
+   "default": "#05060a",
+   "id": "backdrop",
+   "label": "Backdrop",
+   "type": "color"
+  }
+ ],
+ "reddit-post": [],
+ "scramble-reveal": [
+  {
+   "default": "HYPERFRAMES",
+   "description": "Target string that resolves from deterministic wrong glyphs.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color used by the text, prefix, and optional terminal frame.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "terminal",
+   "description": "Terminal frame or clean text-only presentation.",
+   "id": "style",
+   "label": "Style",
+   "options": [
+    "Terminal",
+    "Clean"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the locked string holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "scroll-feed": [
+  {
+   "default": "doom",
+   "description": "Pace of the upward feed movement.",
+   "id": "speed",
+   "label": "Scroll speed",
+   "options": [
+    "Doom",
+    "Frantic"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": 6,
+   "description": "Number of skeleton posts in one repeated feed cycle.",
+   "id": "card_count",
+   "label": "Card count",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds (from mount start); each cue advances the feed by one card. Empty synthesizes evenly spaced flicks, one per card.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the feed scrolls until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "slack-notification-ad": [
+  {
+   "default": "Sarah Chen",
+   "description": "First Slack notification sender or channel.",
+   "id": "request1Title",
+   "label": "Request 1 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Hey! Any chance you could get the launch video done by Friday?",
+   "description": "First Slack notification message.",
+   "id": "request1Text",
+   "label": "Request 1 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Marcus Webb",
+   "description": "Second Slack notification sender or channel.",
+   "id": "request2Title",
+   "label": "Request 2 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "also need a 30s demo cut for the keynote",
+   "description": "Second Slack notification message.",
+   "id": "request2Text",
+   "label": "Request 2 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "#social",
+   "description": "Third Slack notification sender or channel.",
+   "id": "request3Title",
+   "label": "Request 3 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Priya: can we get the launch video resized for TikTok + Reels?",
+   "description": "Third Slack notification message.",
+   "id": "request3Text",
+   "label": "Request 3 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Dana Okafor",
+   "description": "Fourth Slack notification sender or channel.",
+   "id": "request4Title",
+   "label": "Request 4 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "onboarding video needs a v2 with the new UI",
+   "description": "Fourth Slack notification message.",
+   "id": "request4Text",
+   "label": "Request 4 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "#sales",
+   "description": "Fifth Slack notification sender or channel.",
+   "id": "request5Title",
+   "label": "Request 5 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Tom: customer wants a 1-min walkthrough by EOD",
+   "description": "Fifth Slack notification message.",
+   "id": "request5Text",
+   "label": "Request 5 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Leila Haddad",
+   "description": "Sixth Slack notification sender or channel.",
+   "id": "request6Title",
+   "label": "Request 6 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "CEO is asking for a sizzle reel for the board deck",
+   "description": "Sixth Slack notification message.",
+   "id": "request6Text",
+   "label": "Request 6 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "#events",
+   "description": "Seventh Slack notification sender or channel.",
+   "id": "request7Title",
+   "label": "Request 7 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Jordan: offsite recap video??",
+   "description": "Seventh Slack notification message.",
+   "id": "request7Text",
+   "label": "Request 7 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Miguel Reyes",
+   "description": "Eighth Slack notification sender or channel.",
+   "id": "request8Title",
+   "label": "Request 8 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "can you do a Spanish version of the demo too?",
+   "description": "Eighth Slack notification message.",
+   "id": "request8Text",
+   "label": "Request 8 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "#marketing",
+   "description": "Ninth Slack notification sender or channel.",
+   "id": "request9Title",
+   "label": "Request 9 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Ava: we need 3 ad variants \u2014 portrait, square, landscape",
+   "description": "Ninth Slack notification message.",
+   "id": "request9Text",
+   "label": "Request 9 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Raj Patel",
+   "description": "Tenth Slack notification sender or channel.",
+   "id": "request10Title",
+   "label": "Request 10 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "investor update needs a quick video walkthrough",
+   "description": "Tenth Slack notification message.",
+   "id": "request10Text",
+   "label": "Request 10 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Ben Liu",
+   "description": "Eleventh Slack notification sender or channel.",
+   "id": "request11Title",
+   "label": "Request 11 sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "one more: Product Hunt launch video",
+   "description": "Eleventh Slack notification message.",
+   "id": "request11Text",
+   "label": "Request 11 message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "HeyGen",
+   "description": "Sender of the final payoff notification: the brand this video promotes, by its real name.",
+   "id": "payoffTitle",
+   "label": "Payoff sender",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Heard you needed some videos?",
+   "description": "Payoff message from the brand this video promotes.",
+   "id": "payoffText",
+   "label": "Payoff message",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "assets/img/heygen-mark.svg",
+   "description": "Mark of the brand this video promotes, shown only in the final payoff notification.",
+   "id": "payoffIcon",
+   "label": "Payoff logo",
+   "role": "content",
+   "type": "image"
+  }
+ ],
+ "slot-machine-roll": [
+  {
+   "default": "A7K",
+   "description": "Characters the reels land on, one reel column per character. Whitespace is stripped and every reel starts on a zero.",
+   "id": "result",
+   "label": "Result",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "up",
+   "description": "Which way the reels roll: up lifts the zero out through the top, down drops it out through the bottom.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Down"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Reel height and type size. The roll distance scales with it so the reel always lands exactly one row on.",
+   "id": "size",
+   "label": "Size",
+   "options": [
+    "Small",
+    "Standard",
+    "Large"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Character colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "social-proof-card": [
+  {
+   "default": "HyperFrames",
+   "description": "Wordmark at the top of the card.",
+   "id": "brand",
+   "label": "Brand",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "12,000+ creators",
+   "description": "Social-proof line under the stars.",
+   "id": "proof",
+   "label": "Proof line",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Start rendering free",
+   "description": "Label on the closing capsule.",
+   "id": "cta",
+   "label": "CTA",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Write|plain HTML",
+   "description": "First feature, | breaks the line.",
+   "id": "f1",
+   "label": "Feature 1",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Render|pixel-perfect",
+   "description": "Second feature, | breaks the line.",
+   "id": "f2",
+   "label": "Feature 2",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Own|every line",
+   "description": "Third feature, | breaks the line.",
+   "id": "f3",
+   "label": "Feature 3",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "star-rating-fill": [
+  {
+   "default": 4.8,
+   "description": "Target rating in star units from 0 to 5.",
+   "id": "rating",
+   "label": "Rating",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 5,
+   "description": "Number of stars shown in the row.",
+   "id": "starCount",
+   "label": "Star count",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "yes",
+   "description": "Show or hide the synchronized numeric rating.",
+   "id": "showValue",
+   "label": "Show value",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "role": "content",
+   "type": "enum"
+  }
+ ],
+ "strikethrough-replace": [
+  {
+   "default": "left",
+   "description": "Edge the strike grows out of as the timeline runs its scale from 0 to 1.",
+   "id": "origin",
+   "label": "Origin",
+   "options": [
+    "Left",
+    "Center",
+    "Right"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Height of the strike line, from a hairline rule to a heavy bar.",
+   "id": "thickness",
+   "label": "Thickness",
+   "options": [
+    "Thin",
+    "Standard",
+    "Thick"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "red",
+   "description": "Strike colour. Blue and violet ride --accent and --accent-2.",
+   "id": "tint",
+   "label": "Tint",
+   "options": [
+    "Red",
+    "Amber",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Colour of both words: ink for light frames, paper for dark ones.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "testimonial-proof-card": [
+  {
+   "default": "We shipped our launch video in a single afternoon",
+   "description": "The testimonial line. Wraps inside the card; each rendered line reveals through its own mask.",
+   "id": "quote",
+   "label": "Quote",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Maya Chen",
+   "description": "Attribution name in mono. Also seeds the avatar initials.",
+   "id": "name",
+   "label": "Name",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Head of Product",
+   "description": "Attribution role in muted mono. Empty hides the line.",
+   "id": "role",
+   "label": "Role",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "NORTHWIND",
+   "description": "Company mark as wide-tracked mono text at the byline end. Empty hides it.",
+   "id": "company",
+   "label": "Company",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "single afternoon",
+   "description": "First case-insensitive substring match in quote, expanded to whole words, gets the accent underline. Empty disables the draw.",
+   "id": "emphasis",
+   "label": "Emphasis",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Underline and glyph ink from the contract token map.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the card holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "trust-strip": [
+  {
+   "default": "Northwind, Acme Corp, Globex, Initech, Umbra",
+   "description": "Comma-separated wordmark texts (3 to 7 recommended).",
+   "id": "marks",
+   "label": "Marks",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "muted",
+   "description": "Mark color: quiet muted or full-contrast ink.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Muted",
+    "Ink"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated reveal starts in seconds from mount start. Empty uses the authored 0.15s stagger.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Faint palette tint mixed into the mark color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "End-of-clip behavior. None holds to the last frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "typewriter": [
+  {
+   "default": "hyperframes add typewriter",
+   "description": "Line that types itself out character by character.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "ink",
+   "description": "Colour of the text and the caret: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "line",
+   "description": "Caret shape: a thin rule, a terminal-style block, or no caret at all.",
+   "id": "caret",
+   "label": "Caret",
+   "options": [
+    "Line",
+    "Block",
+    "None"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "ui-focus-zoom": [
+  {
+   "default": 64,
+   "description": "Focus anchor, percent from the left edge of the surface.",
+   "id": "anchor_x",
+   "label": "Anchor X",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 36,
+   "description": "Focus anchor, percent from the top edge of the surface.",
+   "id": "anchor_y",
+   "label": "Anchor Y",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 1.6,
+   "description": "Camera scale at the focused state.",
+   "id": "zoom",
+   "label": "Zoom",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 1.4,
+   "description": "Seconds from mount start when the camera departs for the anchor. Clamped inside the hold.",
+   "id": "zoom_at",
+   "label": "Zoom at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "show",
+   "description": "Soft accent bloom at the anchor as the camera arrives.",
+   "id": "halo",
+   "label": "Halo",
+   "options": [
+    "Show",
+    "Hide"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Token the halo and skeleton accent elements ride.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. None holds the final frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "whip-pan": [],
+ "x-post": []
+}

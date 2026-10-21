@@ -10,7 +10,31 @@ for row in re.findall(r"^\| ([^|]+?) \| (`.+?) \|$", brief, re.M):
 
 cat_json = subprocess.run(["npx", "-y", "hyperframes@0.8.74", "catalog", "--json"],
                           capture_output=True, text=True).stdout
-desc = {i["name"]: i.get("description", "") for i in json.loads(cat_json)}
+catalog = json.loads(cat_json)
+desc = {i["name"]: i.get("description", "") for i in catalog}
+
+# Effects outside the brief's pilot table get a category from their catalog tags
+# (first matching rule wins).
+TAG_RULES = [
+    ("Captions", {"captions", "caption-style"}),
+    ("Charts", {"data", "chart", "charts"}),
+    ("Chat + social proof", {"social", "chat", "testimonial"}),
+    ("Product + screen", {"cursor", "mock-ui", "product-demo", "ui-props", "code", "developer"}),
+    ("Camera", {"camera"}),
+    ("Hand-drawn", {"handwritten"}),
+    ("Founder footage", {"lower-third"}),
+    ("Transitions", {"transition", "transition-primitive", "transitions-dev-port"}),
+    ("Shaders + textures", {"webgpu", "webgpu-shader", "shader", "webgl", "texture"}),
+    ("3D", {"3d"}),
+    ("Image galleries", {"carousel", "gallery", "images"}),
+    ("Backgrounds", {"background"}),
+    ("Overlays", {"overlay"}),
+    ("Headline text", {"typography", "text", "title-card", "reveal"}),
+]
+for i in catalog:
+    if i["name"] not in cats:
+        tags = set(i.get("tags", []))
+        cats[i["name"]] = next((c for c, t in TAG_RULES if tags & t), "Other")
 
 import os
 slug = lambda c: re.sub(r"[^a-z0-9]+", "-", c.lower().replace("+", " ")).strip("-")
@@ -31,6 +55,53 @@ order = list(cats)
 rows.sort(key=lambda r: order.index(r["effect"]) if r["effect"] in order else 999)
 cat_list = list(dict.fromkeys(cats[r["effect"]] for r in rows if r["effect"] in cats))
 
+knobs = json.load(open("knobs.json")) if os.path.exists("knobs.json") else {}
+
+# What to bring, by category (on top of each effect's own fields)
+BRING = {
+    "Numbers": "Which number to show. Use one from the verified claims list.",
+    "Charts": "The real data points and labels.",
+    "Captions": "The spoken line, or the voiceover clip to caption.",
+    "Headline text": "The line to animate.",
+    "Chat + social proof": "Who it is from and what it says. A headshot or logo if it shows one.",
+    "Product + screen": "A 2x screenshot or screen recording of what to show.",
+    "Camera": "A 9:16 clip to move (founder footage works).",
+    "Hand-drawn": "What to circle, underline or point at, and the shot it sits on.",
+    "Founder footage": "Founder clip, name and title.",
+    "Close": "The CTA line, logo and URL.",
+    "Image galleries": "The images, in order.",
+    "Transitions": "The two shots to cut between.",
+    "Backgrounds": "Brand colours, or leave as is.",
+    "Overlays": "The footage it sits on.",
+}
+
+
+def make_it_yours(fx, cat):
+    ask, pick, bring = [], [], []
+    for k in knobs.get(fx, []):
+        label = k.get("label") or k.get("id", "")
+        t, role = k.get("type"), k.get("role")
+        if t in ("image", "asset", "video", "audio"):
+            bring.append(f"{label}: {k.get('description', '')}")
+        elif k.get("options"):
+            pick.append(f"{label}: {' / '.join(map(str, k['options']))}")
+        elif role in ("content", None) and t in ("string", "number"):
+            ask.append(f"{label}? (now: {k.get('default', '')})")
+        elif t == "color":
+            pick.append(f"{label}: any colour (now {k.get('default', '')})")
+    if cat in BRING:
+        bring.insert(0, BRING[cat])
+    li = lambda xs: "".join(f"<li>{html.escape(x)}</li>" for x in xs)
+    parts = []
+    if ask: parts.append(f"<b>I'll ask you</b><ul>{li(ask[:12])}</ul>")
+    if pick: parts.append(f"<b>You can pick</b><ul>{li(pick)}</ul>")
+    if bring: parts.append(f"<b>Bring</b><ul>{li(bring)}</ul>")
+    prompt = f"Use the {fx} effect in my video. Ask me: " + "; ".join(
+        [a.split("? (")[0] for a in ask[:12]] + bring) + "."
+    return (f'<details><summary>Make it yours</summary>{"".join(parts)}</details>'
+            f'<button class="copy" data-prompt="{html.escape(prompt)}">Copy request</button>')
+
+
 cards = []
 for r in rows:
     fx, st = r["effect"], r["status"]
@@ -42,7 +113,7 @@ for r in rows:
         cards.append((c, f'<h2 data-cat="{html.escape(c)}">{html.escape(c)}</h2>'))
     cards.append((c, f'''<figure data-cat="{html.escape(c)}">{media}
   <figcaption><code>{fx}</code>{badge}<span class="cat">{html.escape(c)}</span>
-  <p>{html.escape(desc.get(fx, ""))}</p></figcaption></figure>'''))
+  <p>{html.escape(desc.get(fx, ""))}</p>{make_it_yours(fx, c)}</figcaption></figure>'''))
 
 buttons = "".join(f'<button data-cat="{html.escape(c)}">{html.escape(c)}</button>' for c in cat_list)
 ok = sum(r["status"] == "ok" for r in rows)
@@ -66,6 +137,10 @@ video,.fail{{display:block;width:100%;aspect-ratio:9/16;background:#000;object-f
 figcaption{{padding:10px 12px 14px}}code{{font:500 14px "DM Mono",ui-monospace,monospace;color:var(--gold)}}
 .cat{{display:block;font:11px "DM Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-top:2px}}
 .badge{{margin-left:8px;font-size:11px;padding:1px 7px;border-radius:999px;background:#333}}.badge.failed{{background:#5a2222}}.badge.empty{{background:#4a4020}}
+details{{margin-top:10px;font-size:12.5px;color:#c9c5bc}}summary{{cursor:pointer;color:var(--gold);font-weight:600}}
+details b{{display:block;margin-top:8px;color:var(--paper);font-size:11px;text-transform:uppercase;letter-spacing:.06em}}
+details ul{{margin:4px 0 0;padding-left:16px}}details li{{margin:2px 0;word-break:break-word}}
+button.copy{{margin-top:10px;font-size:12px;padding:5px 12px}}button.copy.done{{background:var(--sage,#9fb5a6);color:var(--ink);border-color:transparent}}
 p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}}
 </style></head><body>
 <h1>Effects library</h1>
@@ -78,6 +153,10 @@ p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-lin
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{{
   document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
   document.querySelectorAll("figure,h2").forEach(f=>f.style.display=!b.dataset.cat||f.dataset.cat===b.dataset.cat?"":"none");
+}});
+document.querySelectorAll("button.copy").forEach(b=>b.onclick=()=>{{
+  navigator.clipboard.writeText(b.dataset.prompt).then(()=>{{b.textContent="Copied. Paste it to Claude";b.classList.add("done");
+  setTimeout(()=>{{b.textContent="Copy request";b.classList.remove("done")}},2500)}});
 }});
 </script>
 </body></html>

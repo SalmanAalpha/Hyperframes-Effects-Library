@@ -1,13 +1,9 @@
 effect,category,status,render_seconds,note
 count-up,numbers,ok,16,
-number-wheel,numbers,ok,14,snippet; check flagged issues; 
-number-pop-in,numbers,empty,16,snippet; check flagged issues; frame at 2.5s is blank
-slot-machine-roll,numbers,empty,12,snippet; check flagged issues; frame at 2.5s is blank
 apple-money-count,numbers,ok,19,check flagged issues; 
 mk-progress-stat,numbers,ok,15,check flagged issues; 
 conic-progress-ring,numbers,ok,23,
 star-rating-fill,numbers,ok,19,check flagged issues; 
-animated-bar-chart,charts,empty,14,snippet; check flagged issues; frame at 2.5s is blank
 bar-chart-race,charts,ok,19,
 decline-chart,charts,ok,32,
 data-chart,charts,ok,15,
@@ -24,11 +20,8 @@ caption-editorial-emphasis,captions,ok,14,
 caption-weight-shift,captions,ok,17,
 headline-slam,headline-text,ok,16,
 scramble-reveal,headline-text,ok,16,check flagged issues; 
-typewriter,headline-text,empty,12,snippet; check flagged issues; frame at 2.5s is blank
 per-word-rise,headline-text,ok,21,
 marker-highlight,headline-text,ok,14,
-strikethrough-replace,headline-text,empty,14,snippet; check flagged issues; frame at 2.5s is blank
-inline-highlight,headline-text,empty,15,snippet; check flagged issues; frame at 2.5s is blank
 kinetic-type-swap,headline-text,ok,15,
 slack-notification-ad,chat-social-proof,ok,20,check flagged issues; 
 notification-pileup,chat-social-proof,ok,13,
@@ -52,10 +45,17 @@ push-in,camera,ok,19,
 rack-focus,camera,ok,12,
 whip-pan,camera,ok,14,
 camera-shake,camera,ok,16,
-parallax-zoom,camera,empty,11,snippet; check flagged issues; frame at 2.5s is blank
 hw-underline,hand-drawn,ok,13,
 hw-callout-circle,hand-drawn,ok,15,
 hw-arrow,hand-drawn,ok,14,
-camcorder-hud,founder-footage,empty,13,frame at 2.5s is blank
 lt-kicker-name,founder-footage,ok,15,
 cta-close,close,ok,13,
+camcorder-hud,founder-footage,ok,31,
+number-pop-in,numbers,ok,29,snippet; 
+slot-machine-roll,numbers,ok,28,snippet; 
+animated-bar-chart,charts,ok,30,snippet; 
+typewriter,headline-text,ok,26,snippet; check flagged issues; 
+strikethrough-replace,headline-text,ok,24,snippet; check flagged issues; 
+inline-highlight,headline-text,ok,35,snippet; check flagged issues; 
+parallax-zoom,camera,ok,42,snippet; 
+number-wheel,numbers,ok,24,snippet; check flagged issues; 

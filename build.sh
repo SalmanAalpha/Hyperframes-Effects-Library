@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Effects library builder. Renders a 5s draft preview of each pilot effect.
 # Usage: ./build.sh            (all 60 pilot effects)
+#        ./build.sh all        (every effect in the catalog, skips ones already rendered)
 #        ./build.sh fx1 fx2    (only these)
 # Local only: never uses cloud/lambda/cloudrun/publish.
 set -u
@@ -20,6 +21,11 @@ camcorder-hud lt-kicker-name
 cta-close"
 
 EFFECTS="${*:-$PILOT}"
+SKIP_DONE=0
+if [ "$EFFECTS" = "all" ]; then
+  EFFECTS=$($HF catalog --json | python3 -c 'import json,sys; print(" ".join(i["name"] for i in json.load(sys.stdin)))')
+  SKIP_DONE=1
+fi
 mkdir -p work clips thumbs logs
 [ -f RESULTS.csv ] || echo "effect,category,status,render_seconds,note" > RESULTS.csv
 
@@ -30,6 +36,7 @@ log() { # effect status secs note
 }
 
 for fx in $EFFECTS; do
+  [ "$SKIP_DONE" = 1 ] && grep -q "^$fx," RESULTS.csv && continue
   dir="work/$fx"; L="logs/$fx.log"
   rm -rf "$dir" clips/*/"$fx.mp4" thumbs/*/"$fx.jpg"
   $HF init "$dir" --resolution=portrait --non-interactive >"$L" 2>&1 || { log "$fx" failed 0 "init failed"; continue; }
@@ -43,14 +50,18 @@ sn=d.get("snippet","")
 w=re.search(r"data-width=.(\d+)",sn); h=re.search(r"data-height=.(\d+)",sn)
 print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1080, h.group(1) if h else 1920)' "$PWD/$dir" 2>>"$L")
   read -r src fw fh <<< "$src"
+  # Landscape blocks wider than the frame get stretched to fill it instead of cropped
+  [ "$fw" -gt 1080 ] && { fw=1080; fh=1920; }
   ftop=$(( (1920 - fh) / 2 )); fleft=$(( (1080 - fw) / 2 ))
+  testlayer=""; [ -f "test-content/$fx.html" ] && testlayer=$(cat "test-content/$fx.html")
   [ -n "$src" ] || { log "$fx" failed 0 "add failed or not in catalog"; continue; }
   cid=$(grep -o 'data-composition-id="[^"]*"' "$dir/$src" | head -1 | cut -d'"' -f2)
+  python3 knobs.py "$fx" "$dir/$src" 2>>"$L"
   mode=""
   if [ -z "$cid" ]; then
     # Bare snippet component: paste it plus the example markup from its header comment
     mode="snippet; "
-    python3 snippet_page.py "$dir/$src" > "$dir/index.html" 2>>"$L" || { log "$fx" failed 0 "snippet wiring failed"; continue; }
+    python3 snippet_page.py "$dir/$src" "$fx" > "$dir/index.html" 2>>"$L" || { log "$fx" failed 0 "snippet wiring failed"; continue; }
   else
   cat > "$dir/index.html" <<EOF
 <!doctype html>
@@ -60,6 +71,7 @@ print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1080, h.grou
 <style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#0a0a0a}</style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+$testlayer
   <div id="fx" class="clip" data-composition-id="$cid" data-composition-src="$src" data-start="0" data-duration="5" data-track-index="0" data-width="$fw" data-height="$fh" style="position:absolute;left:${fleft}px;top:${ftop}px;width:${fw}px;height:${fh}px"></div>
 </div>
 <script>window.__timelines = window.__timelines || {}; window.__timelines["main"] = gsap.timeline({ paused: true });</script>
@@ -82,6 +94,7 @@ EOF
   else
     log "$fx" ok "$secs" "${checknote% ; }"
   fi
+  [ "$SKIP_DONE" = 1 ] && rm -rf "$dir"
 done
 
 # Sort into clips/<category>/ and thumbs/<category>/, then rebuild the gallery
