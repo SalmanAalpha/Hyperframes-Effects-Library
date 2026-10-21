@@ -87,6 +87,22 @@ pilot. Time the first 5 and report back if it's much slower.
 
 If an effect name in this table isn't in the catalog, skip it and note it.
 
+## Inputs
+
+Checked 2026-10-21 by installing all 60 into a scratch project: every one
+ships with its own sample content, so **the pilot needs no files from us**.
+
+To reuse an effect in a real Aalpha ad later, these go in `motion/effects-library/inputs/`:
+
+| Folder | What | Used by |
+| --- | --- | --- |
+| `logos/` | Aalpha + Headroom marks (SVG), tool logos: Slack, GHL, ClickUp, Asana, Google | `ai-chat-reveal`, `logo-wall`, `trust-strip`, `cta-close` |
+| `screens/` | Headroom screenshots at 2x: dashboard, owner view, manager view, Slack app | `browser-device-stage`, `ui-focus-zoom`, `cursor-zoom-follow`, `agent-cursor`, `scroll-feed` |
+| `footage/` | Founder talking clips, 9:16 | `rack-focus`, `whip-pan`, `camera-shake`, `push-in`, `camcorder-hud`, `lt-kicker-name` |
+| `people/` | Headshots for quote cards (permission needed) | `testimonial-proof-card`, `social-proof-card`, `chat-thread` |
+| `copy.md` | Real quotes, Slack messages, chat lines | chat, Slack, X and Reddit effects |
+| `numbers.md` | Only numbers from the verified claims list | numbers and chart effects |
+
 ## Questions → Salman
 
 Anything that needs money, an account, or putting files online goes to Salman
