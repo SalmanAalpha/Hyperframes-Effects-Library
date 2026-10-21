@@ -128,10 +128,10 @@ h1{{font-weight:600;letter-spacing:-.02em;margin:0 0 4px}}.sub{{color:var(--mute
 nav{{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;position:sticky;top:0;background:var(--ink);padding:8px 0;z-index:2}}
 button{{background:none;border:1px solid #333;color:var(--paper);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}}
 button.on{{background:var(--gold);color:var(--ink);border-color:var(--gold)}}
-main{{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}}
+main{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));align-items:start;gap:18px}}
 h2{{grid-column:1/-1;margin:18px 0 0;font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);border-top:1px solid #2a2a2a;padding-top:14px}}
 figure{{margin:0;background:var(--card);border-radius:10px;overflow:hidden}}
-video,.fail{{display:block;width:100%;aspect-ratio:9/16;background:#000;object-fit:contain}}
+video{{display:block;width:100%;height:auto;background:#000}}.fail{{display:block;width:100%;aspect-ratio:16/9;background:#000}}
 .fail{{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#d77;padding:16px;text-align:center}}
 .fail small{{color:var(--mute);font-size:11px;word-break:break-word}}
 figcaption{{padding:10px 12px 14px}}code{{font:500 14px "DM Mono",ui-monospace,monospace;color:var(--gold)}}
@@ -141,6 +141,10 @@ details{{margin-top:10px;font-size:12.5px;color:#c9c5bc}}summary{{cursor:pointer
 details b{{display:block;margin-top:8px;color:var(--paper);font-size:11px;text-transform:uppercase;letter-spacing:.06em}}
 details ul{{margin:4px 0 0;padding-left:16px}}details li{{margin:2px 0;word-break:break-word}}
 button.copy{{margin-top:10px;font-size:12px;padding:5px 12px}}button.copy.done{{background:var(--sage,#9fb5a6);color:var(--ink);border-color:transparent}}
+video{{cursor:zoom-in}}
+#lb{{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;flex-direction:column;gap:10px}}
+#lb.on{{display:flex}}#lb video{{max-height:calc(100vh - 70px);max-width:96vw;width:auto;height:auto;cursor:zoom-out}}
+#lb code{{font-size:16px}}
 p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}}
 </style></head><body>
 <h1>Effects library</h1>
@@ -149,7 +153,16 @@ p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-lin
 <main>
 {chr(10).join(x for _, x in cards)}
 </main>
+<div id="lb"><video muted loop playsinline controls></video><code></code></div>
 <script>
+const lb = document.getElementById("lb"), lbv = lb.querySelector("video");
+document.querySelectorAll("main video").forEach(v => v.onclick = () => {{
+  lbv.src = v.getAttribute("src"); lbv.play();
+  lb.querySelector("code").textContent = v.closest("figure").querySelector("code").textContent;
+  lb.classList.add("on");
+}});
+lb.onclick = e => {{ if (e.target !== lbv) {{ lb.classList.remove("on"); lbv.pause(); }} }};
+document.addEventListener("keydown", e => {{ if (e.key === "Escape") {{ lb.classList.remove("on"); lbv.pause(); }} }});
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{{
   document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
   document.querySelectorAll("figure,h2").forEach(f=>f.style.display=!b.dataset.cat||f.dataset.cat===b.dataset.cat?"":"none");

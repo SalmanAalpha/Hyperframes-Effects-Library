@@ -48,11 +48,11 @@ f=[p for p in d.get("written",[]) if p.endswith(".html") and "/compositions/" in
 import re
 sn=d.get("snippet","")
 w=re.search(r"data-width=.(\d+)",sn); h=re.search(r"data-height=.(\d+)",sn)
-print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1080, h.group(1) if h else 1920)' "$PWD/$dir" 2>>"$L")
+print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1920, h.group(1) if h else 1080)' "$PWD/$dir" 2>>"$L")
   read -r src fw fh <<< "$src"
-  # Landscape blocks wider than the frame get stretched to fill it instead of cropped
-  [ "$fw" -gt 1080 ] && { fw=1080; fh=1920; }
-  ftop=$(( (1920 - fh) / 2 )); fleft=$(( (1080 - fw) / 2 ))
+  # Render each effect at its own shape so nothing is cropped: blocks declare
+  # their size, components have none and are built for 16:9 (1920x1080).
+  res=landscape; [ "$fh" -gt "$fw" ] && res=portrait; [ "$fh" = "$fw" ] && res=square
   testlayer=""; [ -f "test-content/$fx.html" ] && testlayer=$(cat "test-content/$fx.html")
   [ -n "$src" ] || { log "$fx" failed 0 "add failed or not in catalog"; continue; }
   cid=$(grep -o 'data-composition-id="[^"]*"' "$dir/$src" | head -1 | cut -d'"' -f2)
@@ -65,14 +65,14 @@ print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1080, h.grou
   else
   cat > "$dir/index.html" <<EOF
 <!doctype html>
-<html lang="en" data-resolution="portrait">
-<head><meta charset="UTF-8" /><meta name="viewport" content="width=1080, height=1920" />
+<html lang="en" data-resolution="$res">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=$fw, height=$fh" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-<style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#0a0a0a}</style></head>
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:${fw}px;height:${fh}px;overflow:hidden;background:#0a0a0a}</style></head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+<div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="$fw" data-height="$fh">
 $testlayer
-  <div id="fx" class="clip" data-composition-id="$cid" data-composition-src="$src" data-start="0" data-duration="5" data-track-index="0" data-width="$fw" data-height="$fh" style="position:absolute;left:${fleft}px;top:${ftop}px;width:${fw}px;height:${fh}px"></div>
+  <div id="fx" class="clip" data-composition-id="$cid" data-composition-src="$src" data-start="0" data-duration="5" data-track-index="0" data-width="$fw" data-height="$fh" style="position:absolute;inset:0;width:${fw}px;height:${fh}px"></div>
 </div>
 <script>window.__timelines = window.__timelines || {}; window.__timelines["main"] = gsap.timeline({ paused: true });</script>
 </body></html>
