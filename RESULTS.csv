@@ -1,44 +1,4 @@
 effect,category,status,render_seconds,note
-mk-line-graph,charts,ok,18,check flagged issues; 
-comparison-split,charts,ok,14,
-before-after-wipe,charts,ok,15,
-caption-pill-karaoke,captions,ok,22,
-caption-kinetic-slam,captions,ok,16,
-caption-emoji-pop,captions,ok,213,check flagged issues; 
-caption-editorial-emphasis,captions,ok,14,
-caption-weight-shift,captions,ok,17,
-headline-slam,headline-text,ok,16,
-scramble-reveal,headline-text,ok,16,check flagged issues; 
-per-word-rise,headline-text,ok,21,
-marker-highlight,headline-text,ok,14,
-kinetic-type-swap,headline-text,ok,15,
-slack-notification-ad,chat-social-proof,ok,20,check flagged issues; 
-notification-pileup,chat-social-proof,ok,13,
-notification-stack,chat-social-proof,ok,15,
-chat-thread,chat-social-proof,ok,17,
-ai-chat-reveal,chat-social-proof,ok,17,
-claude-exchange,chat-social-proof,ok,16,
-x-post,chat-social-proof,ok,15,check flagged issues; 
-reddit-post,chat-social-proof,ok,15,
-testimonial-proof-card,chat-social-proof,ok,21,
-social-proof-card,chat-social-proof,ok,15,
-trust-strip,chat-social-proof,ok,14,
-logo-wall,chat-social-proof,ok,14,
-agent-cursor,product-screen,ok,13,check flagged issues; 
-cursor-zoom-follow,product-screen,ok,12,check flagged issues; 
-ui-focus-zoom,product-screen,ok,27,
-browser-device-stage,product-screen,ok,15,
-scroll-feed,product-screen,ok,21,
-marker-checklist-card,product-screen,ok,16,
-push-in,camera,ok,19,
-rack-focus,camera,ok,12,
-whip-pan,camera,ok,14,
-hw-underline,hand-drawn,ok,13,
-hw-callout-circle,hand-drawn,ok,15,
-hw-arrow,hand-drawn,ok,14,
-lt-kicker-name,founder-footage,ok,15,
-cta-close,close,ok,13,
-camcorder-hud,founder-footage,ok,31,
 number-pop-in,numbers,ok,29,snippet; 
 slot-machine-roll,numbers,ok,28,snippet; 
 animated-bar-chart,charts,ok,30,snippet; 
@@ -49,13 +9,53 @@ parallax-zoom,camera,ok,42,snippet;
 number-wheel,numbers,ok,24,snippet; check flagged issues; 
 camera-shake,camera,ok,41,
 caption-highlight,captions,ok,34,
-count-up,,ok,34,""
-apple-money-count,,ok,43,"check flagged issues; "
-mk-progress-stat,,ok,39,"check flagged issues; "
-conic-progress-ring,,ok,52,""
-star-rating-fill,,ok,32,"check flagged issues; "
-bar-chart-race,,ok,29,""
-decline-chart,,ok,34,""
-data-chart,,ok,29,""
-chart-story,,ok,43,""
-heatmap,,ok,131,"check flagged issues; "
+count-up,numbers,ok,34,
+apple-money-count,numbers,ok,43,check flagged issues; 
+mk-progress-stat,numbers,ok,39,check flagged issues; 
+conic-progress-ring,numbers,ok,52,
+star-rating-fill,numbers,ok,32,check flagged issues; 
+bar-chart-race,charts,ok,29,
+decline-chart,charts,ok,34,
+data-chart,charts,ok,29,
+chart-story,charts,ok,43,
+heatmap,charts,ok,131,check flagged issues; 
+mk-line-graph,charts,ok,36,check flagged issues; 
+comparison-split,charts,ok,17,
+before-after-wipe,charts,ok,12,
+caption-pill-karaoke,captions,ok,17,
+caption-kinetic-slam,captions,ok,19,
+caption-editorial-emphasis,captions,ok,33,
+caption-weight-shift,captions,ok,20,
+headline-slam,headline-text,ok,16,
+scramble-reveal,headline-text,ok,17,check flagged issues; 
+per-word-rise,headline-text,ok,19,
+marker-highlight,headline-text,ok,17,
+kinetic-type-swap,headline-text,ok,35,
+slack-notification-ad,chat-social-proof,ok,36,check flagged issues; 
+notification-pileup,chat-social-proof,ok,40,
+notification-stack,chat-social-proof,ok,15,
+chat-thread,chat-social-proof,ok,18,check flagged issues; 
+ai-chat-reveal,chat-social-proof,ok,17,
+claude-exchange,chat-social-proof,ok,19,
+x-post,chat-social-proof,ok,16,check flagged issues; 
+reddit-post,chat-social-proof,ok,19,
+testimonial-proof-card,chat-social-proof,ok,14,
+social-proof-card,chat-social-proof,ok,15,
+trust-strip,chat-social-proof,ok,13,
+logo-wall,chat-social-proof,ok,15,
+agent-cursor,product-screen,ok,14,
+cursor-zoom-follow,product-screen,ok,12,check flagged issues; 
+ui-focus-zoom,product-screen,ok,26,
+browser-device-stage,product-screen,ok,15,
+scroll-feed,product-screen,ok,24,
+marker-checklist-card,product-screen,ok,18,
+push-in,camera,ok,15,
+rack-focus,camera,ok,14,
+whip-pan,camera,ok,13,check flagged issues; 
+hw-underline,hand-drawn,ok,13,
+hw-callout-circle,hand-drawn,ok,15,
+hw-arrow,hand-drawn,ok,14,
+lt-kicker-name,founder-footage,ok,14,
+cta-close,close,ok,14,
+camcorder-hud,founder-footage,ok,14,
+caption-emoji-pop,captions,ok,204,check flagged issues; 
