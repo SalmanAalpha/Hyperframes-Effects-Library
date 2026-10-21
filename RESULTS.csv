@@ -1,5 +1,4 @@
 effect,category,status,render_seconds,note
-heatmap,charts,ok,106,check flagged issues; 
 mk-line-graph,charts,ok,18,check flagged issues; 
 comparison-split,charts,ok,14,
 before-after-wipe,charts,ok,15,
@@ -59,3 +58,4 @@ bar-chart-race,,ok,29,""
 decline-chart,,ok,34,""
 data-chart,,ok,29,""
 chart-story,,ok,43,""
+heatmap,,ok,131,"check flagged issues; "
