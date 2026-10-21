@@ -1,0 +1,61 @@
+effect,category,status,render_seconds,note
+count-up,numbers,ok,16,
+number-wheel,numbers,ok,14,snippet; check flagged issues; 
+number-pop-in,numbers,empty,16,snippet; check flagged issues; frame at 2.5s is blank
+slot-machine-roll,numbers,empty,12,snippet; check flagged issues; frame at 2.5s is blank
+apple-money-count,numbers,ok,19,check flagged issues; 
+mk-progress-stat,numbers,ok,15,check flagged issues; 
+conic-progress-ring,numbers,ok,23,
+star-rating-fill,numbers,ok,19,check flagged issues; 
+animated-bar-chart,charts,empty,14,snippet; check flagged issues; frame at 2.5s is blank
+bar-chart-race,charts,ok,19,
+decline-chart,charts,ok,32,
+data-chart,charts,ok,15,
+chart-story,charts,ok,15,
+heatmap,charts,ok,106,check flagged issues; 
+mk-line-graph,charts,ok,18,check flagged issues; 
+comparison-split,charts,ok,14,
+before-after-wipe,charts,ok,15,
+caption-pill-karaoke,captions,ok,22,
+caption-kinetic-slam,captions,ok,16,
+caption-highlight,captions,ok,16,
+caption-emoji-pop,captions,ok,213,check flagged issues; 
+caption-editorial-emphasis,captions,ok,14,
+caption-weight-shift,captions,ok,17,
+headline-slam,headline-text,ok,16,
+scramble-reveal,headline-text,ok,16,check flagged issues; 
+typewriter,headline-text,empty,12,snippet; check flagged issues; frame at 2.5s is blank
+per-word-rise,headline-text,ok,21,
+marker-highlight,headline-text,ok,14,
+strikethrough-replace,headline-text,empty,14,snippet; check flagged issues; frame at 2.5s is blank
+inline-highlight,headline-text,empty,15,snippet; check flagged issues; frame at 2.5s is blank
+kinetic-type-swap,headline-text,ok,15,
+slack-notification-ad,chat-social-proof,ok,20,check flagged issues; 
+notification-pileup,chat-social-proof,ok,13,
+notification-stack,chat-social-proof,ok,15,
+chat-thread,chat-social-proof,ok,17,
+ai-chat-reveal,chat-social-proof,ok,17,
+claude-exchange,chat-social-proof,ok,16,
+x-post,chat-social-proof,ok,15,check flagged issues; 
+reddit-post,chat-social-proof,ok,15,
+testimonial-proof-card,chat-social-proof,ok,21,
+social-proof-card,chat-social-proof,ok,15,
+trust-strip,chat-social-proof,ok,14,
+logo-wall,chat-social-proof,ok,14,
+agent-cursor,product-screen,ok,13,check flagged issues; 
+cursor-zoom-follow,product-screen,ok,12,check flagged issues; 
+ui-focus-zoom,product-screen,ok,27,
+browser-device-stage,product-screen,ok,15,
+scroll-feed,product-screen,ok,21,
+marker-checklist-card,product-screen,ok,16,
+push-in,camera,ok,19,
+rack-focus,camera,ok,12,
+whip-pan,camera,ok,14,
+camera-shake,camera,ok,16,
+parallax-zoom,camera,empty,11,snippet; check flagged issues; frame at 2.5s is blank
+hw-underline,hand-drawn,ok,13,
+hw-callout-circle,hand-drawn,ok,15,
+hw-arrow,hand-drawn,ok,14,
+camcorder-hud,founder-footage,empty,13,frame at 2.5s is blank
+lt-kicker-name,founder-footage,ok,15,
+cta-close,close,ok,13,
