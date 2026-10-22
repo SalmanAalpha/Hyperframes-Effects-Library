@@ -11600,7 +11600,355 @@
    "type": "enum"
   }
  ],
+ "pan-stations": [
+  {
+   "default": 4,
+   "description": "Number of feature stations in the row.",
+   "id": "stationCount",
+   "label": "Station count",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "Capture,Edit,Render,Share",
+   "description": "Comma-separated labels shown on the station cards.",
+   "id": "labels",
+   "label": "Station labels",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 0.6,
+   "description": "Seconds the camera holds at each station before panning.",
+   "id": "dwell",
+   "label": "Dwell",
+   "role": "timing",
+   "type": "number"
+  }
+ ],
+ "panel-reveal": [
+  {
+   "default": "Motion tokens",
+   "description": "The header line that sits above the folded body.",
+   "id": "title",
+   "label": "Title",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "How wide the panel sits, 280, 360 or 480 px.",
+   "id": "width",
+   "label": "Width",
+   "options": [
+    "Narrow",
+    "Standard",
+    "Wide"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "paper",
+   "description": "Surface family: paper is the white card for light frames, ink inverts it for dark frames.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Paper",
+    "Ink"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "fade",
+   "description": "Whether the body fades in with the height. fade is the shipped motion, solid opens the height only.",
+   "id": "reveal",
+   "label": "Reveal",
+   "options": [
+    "Fade",
+    "Solid"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "paper-collage-reveal": [
+  {
+   "default": 6,
+   "description": "How many torn paper scraps cover the frame.",
+   "id": "panels",
+   "label": "Panels",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "mixed",
+   "description": "Color per scrap. Mixed seeds a different tone per scrap for a real scrapbook mix.",
+   "id": "tone",
+   "label": "Paper tone",
+   "options": [
+    "Cream",
+    "Kraft",
+    "Mixed"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "outward",
+   "description": "Outward sends each scrap away from the frame center. Scatter sends every scrap the same general direction with seeded variance.",
+   "id": "spread",
+   "label": "Spread",
+   "options": [
+    "Outward",
+    "Scatter"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "parallax-device-dive": [
+  {
+   "default": "blue",
+   "description": "Highlight color used throughout the app UI.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "Dashboard",
+   "description": "Title displayed in the app header.",
+   "id": "app_title",
+   "label": "App title",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "parallax-unzoom": [],
  "parallax-zoom": [],
+ "particle-image-reveal": [
+  {
+   "default": "med",
+   "description": "Particle count for the converging field.",
+   "id": "density",
+   "label": "Density",
+   "options": [
+    "Low",
+    "Medium",
+    "High"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "ltr",
+   "description": "ltr sweeps the reveal left to right; center opens an iris from the middle outward.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Left to right",
+    "Center out"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Particle and monogram color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the revealed image holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "particle-text-dissolve": [
+  {
+   "default": "Dissolve",
+   "description": "The line that assembles from (or dissolves into) the particle cloud.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "in",
+   "description": "in assembles the text from the cloud and holds it crisp; out erases the text into the cloud and holds empty.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Assemble in",
+    "Dissolve out"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": "med",
+   "description": "Particle count cap for the field.",
+   "id": "density",
+   "label": "Density",
+   "options": [
+    "Low",
+    "Medium",
+    "High"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Text and particle color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the end state holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "pendulum-swing": [
+  {
+   "default": "top-center",
+   "description": "Where the content hangs from. The swing rotates about this point, so the top edge stays pinned.",
+   "id": "pivot",
+   "label": "Pivot",
+   "options": [
+    "Top center",
+    "Top left",
+    "Top right"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "How far the first swing reaches before it settles. Every later swing scales with it, so the pendulum still comes to rest upright.",
+   "id": "amplitude",
+   "label": "Amplitude",
+   "options": [
+    "Gentle",
+    "Standard",
+    "Wide"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "right",
+   "description": "Which side the pendulum swings in from: right lifts the first swing clockwise, left mirrors it.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Right",
+    "Left"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Content colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "per-word-crossfade": [
+  {
+   "default": "Create once reuse everywhere",
+   "description": "The line to animate. It is split on whitespace and every word gets its own span, so the stagger picks up the new words.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the vertical offset, so the words cover a shorter or longer run in the same time.",
+   "id": "drift",
+   "label": "Drift",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the blur radius the timeline drives, from a light haze to a full smear.",
+   "id": "blur",
+   "label": "Blur",
+   "options": [
+    "Soft",
+    "Standard",
+    "Heavy"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Word colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "per-word-rise": [
   {
    "default": "WORDS IN MOTION",
@@ -11657,8 +12005,173 @@
    "type": "enum"
   }
  ],
+ "perspective-marquee": [
+  {
+   "default": "standard",
+   "description": "How far the marquee plane leans back toward the horizon.",
+   "id": "tilt",
+   "label": "Tilt",
+   "options": [
+    "Flat",
+    "Standard",
+    "Steep"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the offset the timeline drives, so the strip covers a shorter or longer run in the same time.",
+   "id": "travel",
+   "label": "Travel",
+   "options": [
+    "Short",
+    "Standard",
+    "Long"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Pill colour: ink for light frames, paper for dark ones, accent rides the brand token.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "COMPONENTS, PRIMITIVES, TRANSITIONS, AGENTS",
+   "description": "Comma separated pill labels. The list is laid down twice so the strip still reads as a continuous loop.",
+   "id": "words",
+   "label": "Words",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "physical-exit": [
+  {
+   "default": "toss",
+   "description": "Physical behavior used to carry the card offscreen.",
+   "id": "mode",
+   "label": "Exit mode",
+   "options": [
+    "Toss",
+    "Drop",
+    "Slide"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "Later",
+   "description": "Word displayed on the exiting card.",
+   "id": "text",
+   "label": "Card text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color applied to the card edge.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "plasma": [],
  "plastic": [],
+ "press-ripple": [
+  {
+   "default": "Get started",
+   "description": "Text inside the default pill target.",
+   "id": "label",
+   "label": "Label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Saved",
+   "description": "Text beside the check once the default pill is pressed.",
+   "id": "done_label",
+   "label": "Done label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 50,
+   "description": "Zone center, percent of host width.",
+   "id": "target_x",
+   "label": "Target X",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 50,
+   "description": "Zone center, percent of host height.",
+   "id": "target_y",
+   "label": "Target Y",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 0.9,
+   "description": "Seconds from mount start when the press begins.",
+   "id": "press_at",
+   "label": "Press at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "light",
+   "description": "Pointer tone.",
+   "id": "cursor",
+   "label": "Cursor",
+   "options": [
+    "Light",
+    "Dark"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Contract color for the click rings and the confirmation check.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "How the frame leaves. None holds the pressed state.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Fade up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "prism": [],
  "product-turntable": [
   {
@@ -11717,6 +12230,60 @@
    "label": "Turns per clip",
    "role": "motion",
    "type": "number"
+  }
+ ],
+ "pull-back-reveal": [
+  {
+   "default": "+312%",
+   "description": "Stat shown in the detail chip at the center of the reveal.",
+   "id": "detail_text",
+   "label": "Detail text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Growth compounds",
+   "description": "Headline revealed around the focused detail.",
+   "id": "headline",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Highlight color used across the composed scene.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "pull-to-refresh": [
+  {
+   "default": 120,
+   "description": "Raw pull distance before nonlinear rubber-band resistance.",
+   "id": "pullDistance",
+   "label": "Pull distance",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "ring",
+   "description": "Refresh indicator geometry and loading motion.",
+   "id": "spinnerStyle",
+   "label": "Spinner style",
+   "options": [
+    "Arrow",
+    "Dots",
+    "Ring"
+   ],
+   "role": "content",
+   "type": "enum"
   }
  ],
  "push-in": [
@@ -11810,10 +12377,151 @@
    "type": "color"
   }
  ],
+ "radial-surround": [
+  {
+   "default": "Your team",
+   "description": "Label on the default center token card.",
+   "id": "center_label",
+   "label": "Center label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Docs,Tickets,Dashboards,Inbox,Chat,Sheets",
+   "description": "Comma-separated chip labels that surround the center (up to 12).",
+   "id": "chips",
+   "label": "Chips",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": true,
+   "description": "Converge the ring inward with a subtle edge dim after assembly. The center never moves.",
+   "id": "close_in",
+   "label": "Close in",
+   "role": "timing",
+   "type": "boolean"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated per-chip entrance times in seconds. Blank entries use the default cascade.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Accent token family used by the center card tint.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "How the surrounded stage leaves the frame. Default none: the crowded hold ends the film.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
  "reddit-post": [],
+ "rgb-glitch-text": [
+  {
+   "default": "GLITCH",
+   "description": "The word shown on all three stacked copies.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the red and cyan offsets the timeline drives, so the split reads as a hairline or a hard tear.",
+   "id": "intensity",
+   "label": "Intensity",
+   "options": [
+    "Subtle",
+    "Standard",
+    "Extreme"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Colour of the solid copy the two ghosts split away from: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "ridged-burn": [],
  "ripple-waves": [],
  "ripples": [],
+ "rubber-band-bumper": [
+  {
+   "default": "up",
+   "description": "Edge the outgoing panel releases through.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Left"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Color applied to the tension bands and incoming panel.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "scan-band": [
+  {
+   "default": "HYPERFRAMES",
+   "description": "Text displayed by the scan effect.",
+   "id": "wordmark",
+   "label": "Wordmark",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 12,
+   "description": "Diagonal angle of the distortion band in degrees.",
+   "id": "band_angle",
+   "label": "Band angle",
+   "role": "layout",
+   "type": "number"
+  }
+ ],
  "scramble-reveal": [
   {
    "default": "HYPERFRAMES",
@@ -11862,6 +12570,110 @@
    "type": "enum"
   }
  ],
+ "screen-flow-carousel": [
+  {
+   "default": 3,
+   "description": "How many screens ride the rail.",
+   "id": "screens",
+   "label": "Screens",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated caption per screen. Blank entries use the authored defaults.",
+   "id": "captions",
+   "label": "Captions",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated advance times in seconds from mount start. Blank entries use the authored even rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Token the active ring, caption dot, and skeleton accents ride.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the final screen holds until the cut.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "scroll-camera-story": [
+  {
+   "default": 3,
+   "description": "How many skeleton sections ride the pass. A sections slot overrides this with its own child count.",
+   "id": "sections",
+   "label": "Sections",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 220,
+   "description": "Total camera travel in cqh. The world is 100 + travel cqh tall.",
+   "id": "travel",
+   "label": "Travel",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds: arrival times for the sections after the first. Empty keeps the authored default rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Token the skeleton accents and foreground motes ride.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. None holds the final section.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "scroll-feed": [
   {
    "default": "doom",
@@ -11906,6 +12718,103 @@
   }
  ],
  "sdf-iris": [],
+ "segmentation-flood": [
+  {
+   "default": "Figure, Signal, Ground",
+   "description": "Comma-separated region labels; 2 to 4 are used, one translucent mask + bracket + mono chip each.",
+   "id": "regions",
+   "label": "Regions",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 0.8,
+   "description": "Seconds from mount start when the segmentation pass begins. Clamped so the pass and any exit stay inside the clip.",
+   "id": "flood_at",
+   "label": "Flood at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "on",
+   "description": "Deterministic 2-frame HUD luminance toggle riding the flood pass.",
+   "id": "flicker",
+   "label": "Flicker",
+   "options": [
+    "On",
+    "Off"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Mask, bracket, and chip color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the labeled read holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "separator": [
+  {
+   "default": "horizontal",
+   "description": "Which way the rule runs, and so which way the reveal travels.",
+   "id": "orientation",
+   "label": "Orientation",
+   "options": [
+    "Horizontal",
+    "Vertical"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "hairline",
+   "description": "Size of the rule across its short edge, from a 1px hairline to a 4px bar.",
+   "id": "thickness",
+   "label": "Thickness",
+   "options": [
+    "Hairline",
+    "Medium",
+    "Bold"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "neutral",
+   "description": "Colour of the revealed fill: neutral grey, the theme accent, or the warning hue.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Neutral",
+    "Accent",
+    "Warning"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "settings-toggle-flow": [],
  "share-sheet-carousel": [
   {
    "default": "Share",
@@ -11996,7 +12905,205 @@
    "type": "image"
   }
  ],
+ "shared-axis-y": [
+  {
+   "default": "up",
+   "description": "Which side of the baseline the words travel in from.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Down"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the vertical offset, so the words cover a shorter or longer run in the same time.",
+   "id": "distance",
+   "label": "Distance",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Word colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "shared-axis-z": [
+  {
+   "default": "in",
+   "description": "Which way the words travel along the z axis: in swells up from small, out settles down from large.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "In",
+    "Out"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Scales how far the words start from their final size, so the push covers a shorter or longer run in the same time.",
+   "id": "depth",
+   "label": "Depth",
+   "options": [
+    "Shallow",
+    "Standard",
+    "Deep"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Word colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "sheet-spring-up": [
+  {
+   "default": 668,
+   "description": "Sheet width in pixels.",
+   "id": "width",
+   "label": "Width",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": 34,
+   "description": "Sheet corner radius.",
+   "id": "radius",
+   "label": "Radius",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": "light",
+   "description": "Light is the reference near-white sheet; dark is the raised surface token.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Light",
+    "Dark"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "shimmer-sweep": [],
+ "shutter-slam": [
+  {
+   "default": "MOTION",
+   "description": "The word driven through the six beats.",
+   "id": "text",
+   "label": "Word",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Word color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "shutter",
+   "description": "Integrate each frame over the shutter window, or capture one instant per frame.",
+   "id": "blur",
+   "label": "Blur",
+   "options": [
+    "Shutter",
+    "None"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "",
+   "description": "Comma seconds from mount start for each of the six beats; empty keeps the authored rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "motion",
+   "type": "string"
+  },
+  {
+   "default": "none",
+   "description": "How the word leaves.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "signup-flow": [],
  "sine-wave": [],
+ "skeleton-reveal": [
+  {
+   "default": "Jane Cooper",
+   "description": "Primary line revealed once the skeleton fades out.",
+   "id": "name",
+   "label": "Name",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "jane@example.com",
+   "description": "Secondary line under the name, such as an email or a role.",
+   "id": "detail",
+   "label": "Detail",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "light",
+   "description": "Card palette. Light is the paper card, dark is a near-black card with the matching skeleton bars and text.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Light",
+    "Dark"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "slack-notification-ad": [
   {
    "default": "Sarah Chen",
@@ -12199,6 +13306,62 @@
    "type": "image"
   }
  ],
+ "slit-scan-reveal": [
+  {
+   "default": "rows",
+   "description": "rows smears arrival across horizontal slices; cols across vertical slices.",
+   "id": "axis",
+   "label": "Axis",
+   "options": [
+    "Rows",
+    "Columns"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 0.45,
+   "description": "Maximum sampling offset in seconds across the frame; larger smears further through time.",
+   "id": "spread",
+   "label": "Spread",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": 2.2,
+   "description": "Seconds from mount start when the offsets start collapsing to zero. Clamped so the collapse and any exit stay inside the clip.",
+   "id": "resolve_at",
+   "label": "Resolve at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Subject ring and orbit color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the resolved mark holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
  "slot-machine-roll": [
   {
    "default": "A7K",
@@ -12323,6 +13486,110 @@
    "type": "string"
   }
  ],
+ "soft-blob-touch": [
+  {
+   "default": 66,
+   "description": "Touch point, percent of host width.",
+   "id": "touch_x",
+   "label": "Touch X",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 38,
+   "description": "Touch point, percent of host height.",
+   "id": "touch_y",
+   "label": "Touch Y",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 1.6,
+   "description": "Seconds from mount start when the dot makes contact.",
+   "id": "touch_at",
+   "label": "Touch at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "fine",
+   "description": "Speck register for the granular body.",
+   "id": "grain",
+   "label": "Grain",
+   "options": [
+    "Fine",
+    "Coarse"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Body tint: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the settled blob holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "soft-blur-in": [
+  {
+   "default": "standard",
+   "description": "How far the element is offset before it slides home: 14px, 28px or 52px.",
+   "id": "distance",
+   "label": "Distance",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "up",
+   "description": "up starts the element below its resting place so it rises in, down starts it above so it drops in.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Down"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Starting blur radius, from a light haze to a full smear.",
+   "id": "blur",
+   "label": "Blur",
+   "options": [
+    "Soft",
+    "Standard",
+    "Heavy"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "spain-map": [],
  "spiral": [],
  "spiral-galaxy": [
@@ -12401,7 +13668,221 @@
    "type": "number"
   }
  ],
+ "split-tilt-cards": [
+  {
+   "default": "Before",
+   "description": "Mono header on the left card. Blank hides it.",
+   "id": "label_a",
+   "label": "Left label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "After",
+   "description": "Mono header on the right card. Blank hides it.",
+   "id": "label_b",
+   "label": "Right label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "v1",
+   "description": "Pill badge that spring-pops at the left card inner edge. Blank disables it.",
+   "id": "badge_a",
+   "label": "Left badge",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "v2",
+   "description": "Pill badge that spring-pops at the right card inner edge. Blank disables it.",
+   "id": "badge_b",
+   "label": "Right badge",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Right-card tint, right badge, and right ambient glow color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Outgoing transition. None holds the final spread.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
  "spotify-card": [],
+ "spotlight-card": [],
+ "spring-pop": [
+  {
+   "default": 1.7,
+   "description": "Strength passed to the back.out entrance curve.",
+   "id": "overshoot",
+   "label": "Overshoot",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": 0.9,
+   "description": "Scale at the start of the entrance.",
+   "id": "fromScale",
+   "label": "Starting scale",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "New",
+   "description": "Text displayed inside the badge.",
+   "id": "text",
+   "label": "Label",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "spring-stack-shuffle": [
+  {
+   "default": 4,
+   "description": "Number of cards in the stack, 3 to 5.",
+   "id": "cards",
+   "label": "Cards",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "0.9, 1.7, 1.95",
+   "description": "Comma-separated seconds from mount start; each cue throws the back card to the front. Cues inside a running throw redirect it mid-flight, velocity preserved. Empty keeps the default rhythm.",
+   "id": "cues",
+   "label": "Shuffle cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Active-card ring color from the contract token map.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the settled stack holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "stagger-cascade": [
+  {
+   "default": 6,
+   "description": "Number of tiles in the responsive grid.",
+   "id": "itemCount",
+   "label": "Item count",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 60,
+   "description": "Delay between consecutive tile entrances.",
+   "id": "stagger",
+   "label": "Stagger",
+   "role": "motion",
+   "type": "number"
+  },
+  {
+   "default": "up",
+   "description": "Direction each tile travels into its resting position.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Down",
+    "Left",
+    "Right"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
+ "stagger-lattice": [],
+ "staggered-fade-up": [
+  {
+   "default": "up",
+   "description": "Where the offset the timeline drives points.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Up",
+    "Down",
+    "Left",
+    "Right"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the travel offset, so the words cover a shorter or longer run in the same time.",
+   "id": "distance",
+   "label": "Distance",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Word colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "Staggered fade up",
+   "description": "The words themselves, split on spaces, one span and one stagger step each.",
+   "id": "words",
+   "label": "Words",
+   "role": "content",
+   "type": "string"
+  }
+ ],
  "star-rating-fill": [
   {
    "default": 4.8,
@@ -12471,7 +13952,247 @@
    "type": "enum"
   }
  ],
+ "state-chip-rail": [
+  {
+   "default": "Queued,Reading,Drafting,Done",
+   "description": "Comma-separated chip labels in machine order (2 to 8 states).",
+   "id": "states",
+   "label": "States",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated activation times in seconds, one per advance (state 1 onward). Blank entries use the default even rhythm.",
+   "id": "times",
+   "label": "Times",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": 1,
+   "description": "Index of the state the badges pop beside.",
+   "id": "badge_state",
+   "label": "Badge state",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated badge labels shown beside the badge state. Empty disables.",
+   "id": "badges",
+   "label": "Badges",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Accent token family used by the active chip.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "How the rail leaves the frame. Default none: the hold ends the film.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "sticky-mock-swap": [
+  {
+   "default": "Instant previews,Zero config,Ship on Friday",
+   "description": "Comma-separated feature captions shown beside the pinned mock.",
+   "id": "captions",
+   "label": "Captions",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "violet",
+   "description": "Accent tint used across the mock states.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "stitched-text-draw": [
+  {
+   "default": "STITCH",
+   "description": "Uppercased A-Z 0-9 and space, clamped to 12 characters.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "fine",
+   "description": "Dash/gap scale, thread width, and jitter amplitude.",
+   "id": "stitch",
+   "label": "Stitch",
+   "options": [
+    "Fine",
+    "Coarse"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Thread color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the stitched word holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "stop-motion-cadence": [
+  {
+   "default": "10",
+   "description": "Stepped-time cadence in frames per second.",
+   "id": "fps",
+   "label": "Cadence",
+   "options": [
+    "8 fps",
+    "10 fps",
+    "12 fps"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": "on",
+   "description": "2-frame edge jitter, seeded per step. Off holds dead still.",
+   "id": "boil",
+   "label": "Boil",
+   "options": [
+    "On",
+    "Off"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Lead shape color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the settled collage holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "store-badge-lockup": [
+  {
+   "default": "Get the app",
+   "description": "Short action line shown above the store badges.",
+   "id": "headline",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "yes",
+   "description": "Show or hide the App Store badge.",
+   "id": "showApple",
+   "label": "Show App Store",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "yes",
+   "description": "Show or hide the Google Play badge.",
+   "id": "showGoogle",
+   "label": "Show Google Play",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "role": "content",
+   "type": "enum"
+  }
+ ],
  "strands": [],
+ "streaming-text": [
+  {
+   "default": 27,
+   "description": "Type size of the streamed words.",
+   "id": "size",
+   "label": "Size",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": "dark-on-light",
+   "description": "Ink pair: dark words on a light ground, or light words on a dark ground.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Dark on light",
+    "Light on dark"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "strikethrough-replace": [
   {
    "default": "left",
@@ -12527,9 +14248,303 @@
   }
  ],
  "stripes": [],
+ "success-check": [
+  {
+   "default": "green",
+   "description": "Colour pair, a pale halo behind a saturated mark. green and amber are literal state colours; blue and violet ride the composition theme tokens.",
+   "id": "tint",
+   "label": "Tint",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet",
+    "Amber"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Diameter of the halo and of the mark inside it.",
+   "id": "size",
+   "label": "Size",
+   "options": [
+    "Small",
+    "Standard",
+    "Large"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Opacity of the circle the tick sits in.",
+   "id": "ring",
+   "label": "Ring",
+   "options": [
+    "Subtle",
+    "Standard",
+    "Bold"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Multiplies the rotation the timeline drives, so the mark swings less or more into place.",
+   "id": "spin",
+   "label": "Spin",
+   "options": [
+    "Subtle",
+    "Standard",
+    "Bold"
+   ],
+   "role": "motion",
+   "type": "enum"
+  }
+ ],
  "sun-burst": [],
+ "svg-line-draw-loader": [],
+ "svg-mask-reveal": [
+  {
+   "default": "REVEAL",
+   "description": "Text used as the SVG mask window.",
+   "id": "text",
+   "label": "Wordmark",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 100,
+   "description": "Final revealed width of the wordmark.",
+   "id": "revealProgress",
+   "label": "Reveal progress",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": 24,
+   "description": "Softness of the traveling reveal edge.",
+   "id": "featherPx",
+   "label": "Edge feather",
+   "role": "style",
+   "type": "number"
+  }
+ ],
+ "svg-stroke-trace": [
+  {
+   "default": "M 92 328 C 178 142 292 138 366 276 C 430 396 500 414 558 262 C 622 94 724 112 786 274 C 836 406 894 376 930 194",
+   "description": "SVG path data for the authored mark.",
+   "id": "path",
+   "label": "Path",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 12,
+   "description": "Width of the traced stroke in SVG viewBox units.",
+   "id": "stroke_width",
+   "label": "Stroke width",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Color used by the trace and optional fill.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the finished mark holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "swipe-rail": [
+  {
+   "default": 4,
+   "description": "Number of cards rendered in the rail.",
+   "id": "card_count",
+   "label": "Card count",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Active color used by the focused card and contact circle.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "Feature",
+   "description": "Text placed before each card number.",
+   "id": "card_label_prefix",
+   "label": "Card label prefix",
+   "role": "content",
+   "type": "string"
+  }
+ ],
  "swirl": [],
  "swirl-vortex": [],
+ "tabs-slide-indicator": [
+  {
+   "default": "ink",
+   "description": "Fill of the sliding pill. ink is literal; the rest ride the composition theme tokens.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Ink",
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Width of one tab. The slide the timeline drives is scaled to match, so the pill still lands on the next tab.",
+   "id": "width",
+   "label": "Tab width",
+   "options": [
+    "Compact",
+    "Standard",
+    "Wide"
+   ],
+   "role": "layout",
+   "type": "enum"
+  },
+  {
+   "default": "pill",
+   "description": "Corner radius of the track and the pill.",
+   "id": "shape",
+   "label": "Shape",
+   "options": [
+    "Pill",
+    "Rounded",
+    "Square"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "Plan,Debug,Ask",
+   "description": "The tab names, separated by commas. Two or more names rebuild the row.",
+   "id": "labels",
+   "label": "Labels",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "telemetry-hud": [
+  {
+   "default": "fps:59.94,latency:11.8 ms,gpu:38%,heap:1.2 GB",
+   "description": "Comma-separated label:value pairs, up to 8. The first colon splits label from value.",
+   "id": "readouts",
+   "label": "Readouts",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 0,
+   "description": "Index of the readout rendered in the accent color. -1 disables.",
+   "id": "emphasize",
+   "label": "Emphasize",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds relative to mount start; cue N starts readout N value tick. Empty uses the authored rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color of the emphasized readout.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Outgoing transition. Frame roots own transitions; none holds the end frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "terminal-simulator": [],
+ "testimonial-card": [
+  {
+   "default": "This changed how we ship.",
+   "description": "Customer testimonial copy revealed at reading pace.",
+   "id": "quote",
+   "label": "Quote",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Ken Tanaka",
+   "description": "Name attributed to the testimonial.",
+   "id": "author",
+   "label": "Author",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "@ken",
+   "description": "Role or social handle shown beneath the author name.",
+   "id": "handle",
+   "label": "Handle",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 5,
+   "description": "Visible customer rating from zero to five stars.",
+   "id": "rating",
+   "label": "Rating",
+   "role": "content",
+   "type": "number"
+  }
+ ],
  "testimonial-proof-card": [
   {
    "default": "We shipped our launch video in a single afternoon",
@@ -12598,10 +14613,546 @@
    "type": "enum"
   }
  ],
+ "text-match-cut": [
+  {
+   "default": "Basic Interface Behavior",
+   "description": "The line on screen before the cut.",
+   "id": "text_a",
+   "label": "Outgoing text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Thoughtful Experience Design",
+   "description": "The line that continues the move after the cut.",
+   "id": "text_b",
+   "label": "Incoming text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "scale-down",
+   "description": "Which property carries the cut. Both texts ride the same curve.",
+   "id": "mode",
+   "label": "Move",
+   "options": [
+    "Scale down (tutorial)",
+    "Scale up",
+    "Tracking in",
+    "Slide left",
+    "Slide right",
+    "Slide up",
+    "Slide down"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "on",
+   "description": "Cyan-to-blue bar sweeping through the glyphs around the cut.",
+   "id": "sweep",
+   "label": "Gradient sweep",
+   "options": [
+    "On",
+    "Off"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "navy",
+   "description": "The tutorial navy glow, or transparent so the host shows through.",
+   "id": "background",
+   "label": "Background",
+   "options": [
+    "Navy glow",
+    "Transparent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "text-shimmer": [
+  {
+   "default": "Effortless",
+   "description": "Text receiving the single shimmer pass.",
+   "id": "text",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Hue of the specular shimmer band.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 1.2,
+   "description": "Requested start time for the shimmer sweep.",
+   "id": "sweep_at",
+   "label": "Sweep start",
+   "role": "timing",
+   "type": "number"
+  }
+ ],
+ "text-stagger": [
+  {
+   "default": "Build motion systems fast",
+   "description": "Headline copy. Every whitespace-separated word becomes one staggered span.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 74,
+   "description": "Type size of every word in pixels, clamped to 24-160. Line height stays proportional.",
+   "id": "size",
+   "label": "Size",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": "ink",
+   "description": "Base word colour: ink for light frames, paper for dark ones.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "blue",
+   "description": "Colour of the shimmer the second timeline step sweeps across the words.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Blue",
+    "Green",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "text-state-swap": [
+  {
+   "default": "Saving draft",
+   "description": "The outgoing label, on screen before the swap.",
+   "id": "from-text",
+   "label": "From text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Saved",
+   "description": "The incoming label, on screen after the swap. It rests hidden until the timeline reveals it.",
+   "id": "to-text",
+   "label": "To text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Scales the vertical offset the timeline drives, so each label covers a shorter or longer run in the same time.",
+   "id": "distance",
+   "label": "Distance",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Label colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "texture-mask-text": [],
  "thermal-distortion": [],
  "thin-film": [],
  "thread-message-stack": [],
+ "three-orbiting-cards": [],
+ "ticker-takeover": [
+  {
+   "default": "faster,smarter,together,everywhere",
+   "description": "Comma-separated words shown by the ticker.",
+   "id": "options",
+   "label": "Options",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "together",
+   "description": "Word the ticker locks on and promotes.",
+   "id": "final_word",
+   "label": "Final word",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color used for the lock flash and promoted word.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "tiktok-follow": [],
+ "tilt-card": [
+  {
+   "default": "Primitive",
+   "description": "Small uppercase kicker above the headline.",
+   "id": "eyebrow",
+   "label": "Eyebrow",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Agent-ready motion",
+   "description": "Large card headline.",
+   "id": "headline",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "How far the corner glow reaches past the card edges, which sets both its spread at rest and how far the timeline drift carries it.",
+   "id": "glow",
+   "label": "Glow",
+   "options": [
+    "Tight",
+    "Standard",
+    "Wide"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "indigo",
+   "description": "Colour family of the card gradient, corner glow, eyebrow and drop shadow.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Indigo",
+    "Emerald",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "titlecard-calm": [
+  {
+   "default": "Less, but better",
+   "description": "Primary title displayed in the card.",
+   "id": "headline",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "DESIGN PRINCIPLE",
+   "description": "Small uppercase label displayed above the headline.",
+   "id": "kicker",
+   "label": "Kicker",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "titlecard-lockup": [
+  {
+   "default": "HYPERFRAMES",
+   "description": "Display wordmark that settles dead-center.",
+   "id": "wordmark",
+   "label": "Wordmark",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "WRITE HTML. RENDER VIDEO.",
+   "description": "Mono caption under the rule. Empty hides it.",
+   "id": "label",
+   "label": "Label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "INTRODUCING",
+   "description": "Small mono label above the wordmark. Empty hides it.",
+   "id": "kicker",
+   "label": "Kicker",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "show",
+   "description": "Hairline rule drawn left to right under the wordmark.",
+   "id": "rule",
+   "label": "Rule",
+   "options": [
+    "Show",
+    "Hide"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Contract color carried by the hairline rule.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Frame roots own transitions, so none is the default.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "toggle-flip": [
+  {
+   "default": "on",
+   "description": "Target end state the flip lands on.",
+   "id": "direction",
+   "label": "Flip direction",
+   "options": [
+    "Off \u2192 On",
+    "On \u2192 Off"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "Auto-save",
+   "description": "Optional caption under the toggle. Blank hides the line.",
+   "id": "label",
+   "label": "Caption",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 40,
+   "description": "Toggle width as a percent of the host box width.",
+   "id": "size",
+   "label": "Size",
+   "role": "layout",
+   "type": "number"
+  }
+ ],
+ "top-down-letters": [
+  {
+   "default": "CASCADE",
+   "description": "Word that cascades in. Every character becomes one letter span, in source order.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Multiplies the drop the timeline drives, so the letters cover a shorter or longer run in the same time.",
+   "id": "distance",
+   "label": "Distance",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "ink",
+   "description": "Letter colour: ink for light frames, paper for dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "torn-paper-rip": [
+  {
+   "default": "left-to-right",
+   "description": "Which way the tear travels across the frame.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Left to right",
+    "Right to left"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "cream",
+   "description": "Color of the exposed paper cross-section riding the tear.",
+   "id": "tone",
+   "label": "Paper tone",
+   "options": [
+    "Cream",
+    "Kraft",
+    "White"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 55,
+   "description": "How jagged and fibrous the tear edge is. Low is a clean deckle edge, high is roughly torn.",
+   "id": "roughness",
+   "label": "Roughness",
+   "role": "style",
+   "type": "number"
+  }
+ ],
+ "touch-indicator": [
+  {
+   "default": "tap",
+   "id": "gesture",
+   "label": "Gesture",
+   "options": [
+    "Tap",
+    "Swipe"
+   ],
+   "type": "enum"
+  },
+  {
+   "default": "light",
+   "id": "polarity",
+   "label": "Polarity",
+   "options": [
+    "Light (on dark UI)",
+    "Dark (on light UI)"
+   ],
+   "type": "enum"
+  },
+  {
+   "default": 50,
+   "id": "targetX",
+   "label": "Target X",
+   "type": "number"
+  },
+  {
+   "default": 55,
+   "id": "targetY",
+   "label": "Target Y",
+   "type": "number"
+  }
+ ],
+ "tracing-beam": [
+  {
+   "default": "Search,Preview,Export",
+   "description": "Three comma-separated labels shown in path order.",
+   "id": "labels",
+   "label": "Labels",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "cyan",
+   "description": "Beam and active-element color.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Cyan",
+    "Violet",
+    "Amber"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "tracking-in": [
+  {
+   "default": "standard",
+   "description": "Multiplies the letter-spacing the timeline drives, so the reveal starts and settles proportionally wider or tighter.",
+   "id": "tracking",
+   "label": "Tracking",
+   "options": [
+    "Tight",
+    "Standard",
+    "Wide"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "standard",
+   "description": "Vertical offset the text starts from, which the timeline reads as the start of its travel and eases to zero.",
+   "id": "rise",
+   "label": "Rise",
+   "options": [
+    "Subtle",
+    "Standard",
+    "Bold"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "inherit",
+   "description": "Text colour: inherit keeps the surrounding page colour, ink suits light frames, paper dark ones, accent rides --brand.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Inherit",
+    "Ink",
+    "Paper",
+    "Accent"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "transitions-3d": [],
  "transitions-blur": [],
  "transitions-cover": [],
@@ -12671,6 +15222,113 @@
    "type": "enum"
   }
  ],
+ "type-match-cut": [
+  {
+   "default": "Meet the new editor",
+   "description": "Text split around the incoming panel.",
+   "id": "text",
+   "label": "Headline",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Accent color used by the incoming editor scene.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "typed-prompt": [
+  {
+   "default": "Generate a product launch video",
+   "description": "The prompt that gets typed.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": ">",
+   "description": "Leading glyph before the typed line. Empty string hides it.",
+   "id": "prompt_glyph",
+   "label": "Prompt glyph",
+   "role": "style",
+   "type": "string"
+  },
+  {
+   "default": "human",
+   "description": "Keystroke rhythm: uniform fixed steps or seeded human chunks.",
+   "id": "cadence",
+   "label": "Cadence",
+   "options": [
+    "Uniform",
+    "Human"
+   ],
+   "role": "timing",
+   "type": "enum"
+  },
+  {
+   "default": "blink",
+   "description": "Blink runs integer sine cycles during typing then goes solid.",
+   "id": "caret",
+   "label": "Caret",
+   "options": [
+    "Blink",
+    "Solid"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "",
+   "description": "Mistyped word typed in place of the final word, then backspaced and corrected. Empty disables.",
+   "id": "correction",
+   "label": "Correction",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "",
+   "description": "Comma-separated seconds relative to mount start; cue N anchors the start of word N. Empty uses the authored rhythm.",
+   "id": "cues",
+   "label": "Cues",
+   "role": "timing",
+   "type": "string"
+  },
+  {
+   "default": "green",
+   "description": "Color of the prompt glyph and caret.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Outgoing transition. Frame roots own transitions; none holds the end frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
  "typewriter": [
   {
    "default": "hyperframes add typewriter",
@@ -12702,6 +15360,40 @@
     "Line",
     "Block",
     "None"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
+ "typing-indicator": [
+  {
+   "default": 124,
+   "description": "Bubble width in pixels; dots and tail scale with it.",
+   "id": "size",
+   "label": "Size",
+   "role": "style",
+   "type": "number"
+  },
+  {
+   "default": "dark",
+   "description": "Dark is the reference iOS bubble; light suits bright chat grounds.",
+   "id": "tone",
+   "label": "Tone",
+   "options": [
+    "Dark",
+    "Light"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "on",
+   "description": "The two shrinking circles anchoring the bubble to the sender side.",
+   "id": "tail",
+   "label": "Tail",
+   "options": [
+    "On",
+    "Off"
    ],
    "role": "style",
    "type": "enum"
@@ -12784,6 +15476,155 @@
  "us-map-bubble": [],
  "us-map-flow": [],
  "us-map-hex": [],
+ "variable-axis-type": [
+  {
+   "default": "IMPACT",
+   "description": "Word or short headline to emphasize.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "wght",
+   "description": "Variable-font axis used for the emphasis morph.",
+   "id": "axis",
+   "label": "Axis",
+   "options": [
+    "Weight",
+    "Width"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": 200,
+   "description": "Starting coordinate on the selected font axis.",
+   "id": "fromValue",
+   "label": "From value",
+   "role": "motion",
+   "type": "number"
+  },
+  {
+   "default": 900,
+   "description": "Ending coordinate on the selected font axis.",
+   "id": "toValue",
+   "label": "To value",
+   "role": "motion",
+   "type": "number"
+  }
+ ],
+ "variable-font-flex": [
+  {
+   "default": "FLEX",
+   "description": "The word whose variable-font axes flex.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "both",
+   "description": "Which variable-font axes animate: weight, width, or both.",
+   "id": "axis",
+   "label": "Axis",
+   "options": [
+    "Weight",
+    "Width",
+    "Both"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 0.06,
+   "description": "Seconds between per-character flex starts, clamped 0 to 0.25.",
+   "id": "stagger",
+   "label": "Stagger",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Word color: green rides --brand, blue rides --accent, violet rides --accent-2.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the carved word holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "vector-editor-rig": [
+  {
+   "default": "pen",
+   "description": "Tool highlighted in the editor toolbar.",
+   "id": "tool",
+   "label": "Active tool",
+   "options": [
+    "Pen",
+    "Shape",
+    "Type"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "Logo",
+   "description": "Name shown for the active vector path.",
+   "id": "pathLabel",
+   "label": "Path label",
+   "role": "content",
+   "type": "string"
+  }
+ ],
+ "velocity-throw-snap": [
+  {
+   "default": 2,
+   "description": "Zero-based index of the shot centered at the settle.",
+   "id": "hero_index",
+   "label": "Hero index",
+   "role": "content",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Highlight color used by the hero shot.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "Shot",
+   "description": "Text placed before each shot number.",
+   "id": "card_label_prefix",
+   "label": "Card label prefix",
+   "role": "content",
+   "type": "string"
+  }
+ ],
  "vfx-anamorphic-flare": [
   {
    "default": 5,
@@ -12841,7 +15682,82 @@
  "vfx-portal": [],
  "vfx-shatter": [],
  "vfx-text-cursor": [],
+ "vignette": [],
  "voronoi": [],
+ "vox-annotate": [
+  {
+   "default": "Ship the story, not the spec",
+   "description": "Full line of display text.",
+   "id": "text",
+   "label": "Text",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "story",
+   "description": "First case-insensitive substring match in text receives the marker and annotation. Empty or unmatched draws nothing.",
+   "id": "keyword",
+   "label": "Keyword",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "the annotate beat",
+   "description": "Mono callout label at the end of the connector. Empty draws the marker only.",
+   "id": "note",
+   "label": "Note",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "highlight",
+   "description": "Shape of the hand-drawn marker stroke.",
+   "id": "style",
+   "label": "Marker style",
+   "options": [
+    "Highlight",
+    "Circle",
+    "Underline",
+    "Scribble"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": 0.9,
+   "description": "Second (from mount start) the annotate gesture starts. Clamped so the gesture completes before any exit.",
+   "id": "draw_at",
+   "label": "Draw at",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Annotation ink color from the contract token map.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure. Default none: the lockup holds until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
  "vpn-youtube-spot": [],
  "water": [],
  "waveform": [],
@@ -12964,6 +15880,115 @@
   }
  ],
  "whip-pan": [],
+ "whip-pan-cut": [
+  {
+   "default": "left",
+   "description": "Shared travel direction for the outgoing and incoming scenes.",
+   "id": "direction",
+   "label": "Direction",
+   "options": [
+    "Left",
+    "Right"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": 0.25,
+   "description": "Seconds after mount start when the whip begins.",
+   "id": "whip_at",
+   "label": "Whip start",
+   "role": "timing",
+   "type": "number"
+  },
+  {
+   "default": "green",
+   "description": "Seam hairline and default after art tint.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "Optional departure of the landed scene. Default none: it rests until the frame cuts.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "timing",
+   "type": "enum"
+  }
+ ],
+ "whiteboard-ink": [
+  {
+   "default": "bulb",
+   "description": "Authored preset sketch to draw. Ignored when the strokes slot holds custom paths.",
+   "id": "sketch",
+   "label": "Sketch",
+   "options": [
+    "Bulb",
+    "Flow",
+    "Rocket"
+   ],
+   "role": "content",
+   "type": "enum"
+  },
+  {
+   "default": "Draw the idea",
+   "description": "Short line shown after the sketch completes.",
+   "id": "caption",
+   "label": "Caption",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "show",
+   "description": "Show or hide the pen nib actor.",
+   "id": "pen",
+   "label": "Pen",
+   "options": [
+    "Show",
+    "Hide"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "green",
+   "description": "Color used by strokes marked data-ink=accent (one highlight stroke in each preset).",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Green",
+    "Blue",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  },
+  {
+   "default": "none",
+   "description": "How the completed lockup leaves. none holds the final frame.",
+   "id": "exit",
+   "label": "Exit",
+   "options": [
+    "None",
+    "Fade",
+    "Up"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ],
  "wireframe-portal-title": [
   {
    "default": "BREAKTHROUGH",
@@ -13025,13 +16050,88 @@
    "type": "number"
   }
  ],
+ "wordmark-tiles": [
+  {
+   "default": "LAUNCH",
+   "description": "Text resolved by the tile wave.",
+   "id": "text",
+   "label": "Wordmark",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": 12,
+   "description": "Number of columns in the wordmark tile grid.",
+   "id": "columns",
+   "label": "Columns",
+   "role": "layout",
+   "type": "number"
+  },
+  {
+   "default": 40,
+   "description": "Delay between tile reveals in spatial wave order.",
+   "id": "waveStagger",
+   "label": "Wave stagger",
+   "role": "motion",
+   "type": "number"
+  }
+ ],
  "world-map": [],
  "worley-noise": [],
+ "x-follow-card": [],
  "x-post": [],
+ "yt-camera-move": [],
+ "yt-circle-pointer": [],
  "yt-comment-card": [],
+ "yt-feather-highlight": [],
  "yt-lcd-background": [],
  "yt-logo-intro": [],
  "yt-lower-third": [],
  "yt-prism-title": [],
- "yt-vertical-fill": []
+ "yt-screen-warp": [],
+ "yt-vertical-fill": [],
+ "zoom-through-transition": [
+  {
+   "default": "Before",
+   "description": "Caption on the outgoing scene, the one on screen when the transition starts.",
+   "id": "from-label",
+   "label": "Outgoing label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "Zoom Through Transition",
+   "description": "Caption on the incoming scene, the one the timeline wipes into frame.",
+   "id": "to-label",
+   "label": "Incoming label",
+   "role": "content",
+   "type": "string"
+  },
+  {
+   "default": "standard",
+   "description": "Multiplies how far both scenes travel and how hard the outgoing one blurs, so the push covers a shorter or longer run in the same time.",
+   "id": "depth",
+   "label": "Depth",
+   "options": [
+    "Close",
+    "Standard",
+    "Far"
+   ],
+   "role": "motion",
+   "type": "enum"
+  },
+  {
+   "default": "blue",
+   "description": "Theme token for the ring marking the incoming scene. Blue rides --accent, green --brand, violet --accent-2; each falls back to a neutral hairline.",
+   "id": "accent",
+   "label": "Accent",
+   "options": [
+    "Blue",
+    "Green",
+    "Violet"
+   ],
+   "role": "style",
+   "type": "enum"
+  }
+ ]
 }
