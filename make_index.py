@@ -111,14 +111,22 @@ cards = []
 for r in rows:
     fx, st = r["effect"], r["status"]
     c = cats.get(fx, "Other")
-    media = (f'<video src="clips/{r["category"]}/{fx}.mp4" poster="thumbs/{r["category"]}/{fx}.jpg" muted loop playsinline preload="none"></video>'
+    media = (f'<div class="m" data-clip="clips/{r["category"]}/{fx}.mp4"><img src="small/{r["category"]}/{fx}.jpg" loading="lazy" decoding="async" alt=""></div>'
              if st != "failed" else f'<div class="fail">Failed<br><small>{html.escape(r["note"])}</small></div>')
     badge = f'<span class="badge {st}">{st}</span>' if st != "ok" else ""
     if not cards or cards[-1][0] != c:
         cards.append((c, f'<h2 data-cat="{html.escape(c)}">{html.escape(c)}</h2>'))
-    cards.append((c, f'''<figure data-cat="{html.escape(c)}">{media}
+    cards.append((c, f'''<figure data-cat="{html.escape(c)}" data-q="{html.escape((fx + ' ' + desc.get(fx, '')).lower())}">{media}
   <figcaption><code>{fx}</code>{badge}<span class="cat">{html.escape(c)}</span>
   <p>{html.escape(desc.get(fx, ""))}</p>{make_it_yours(fx, c)}</figcaption></figure>'''))
+
+FF = os.path.join("..", "ffmpeg-bin", "bin", "ffmpeg")
+for r in rows:
+    big, small = f"thumbs/{r['category']}/{r['effect']}.jpg", f"small/{r['category']}/{r['effect']}.jpg"
+    if os.path.exists(big) and not os.path.exists(small):
+        os.makedirs(os.path.dirname(small), exist_ok=True)
+        subprocess.run([FF, "-loglevel", "error", "-y", "-i", big, "-vf",
+                        "scale='if(gt(iw,ih),480,-2)':'if(gt(iw,ih),-2,480)'", "-q:v", "5", small])
 
 buttons = "".join(f'<button data-cat="{html.escape(c)}">{html.escape(c)}</button>' for c in cat_list)
 ok = sum(r["status"] == "ok" for r in rows)
@@ -136,7 +144,9 @@ button.on{{background:var(--gold);color:var(--ink);border-color:var(--gold)}}
 main{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));align-items:start;gap:18px}}
 h2{{grid-column:1/-1;margin:18px 0 0;font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);border-top:1px solid #2a2a2a;padding-top:14px}}
 figure{{margin:0;background:var(--card);border-radius:10px;overflow:hidden}}
-video{{display:block;width:100%;height:auto;background:#000}}.fail{{display:block;width:100%;aspect-ratio:16/9;background:#000}}
+.m{{position:relative;background:#000;cursor:zoom-in}}.m img,.m video{{display:block;width:100%;height:auto}}
+.m video{{position:absolute;inset:0;height:100%;object-fit:contain;background:#000}}
+#q{{width:100%;max-width:420px;background:#15181a;border:1px solid #333;color:var(--paper);border-radius:8px;padding:9px 12px;font:inherit;margin-bottom:12px}}.fail{{display:block;width:100%;aspect-ratio:16/9;background:#000}}
 .fail{{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#d77;padding:16px;text-align:center}}
 .fail small{{color:var(--mute);font-size:11px;word-break:break-word}}
 figcaption{{padding:10px 12px 14px}}code{{font:500 14px "DM Mono",ui-monospace,monospace;color:var(--gold)}}
@@ -154,32 +164,42 @@ p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-lin
 </style></head><body>
 <h1>Effects library</h1>
 <p class="sub">{len(rows)} HyperFrames registry effects, 5s draft previews, defaults untouched. {ok} rendered clean. Name in gold = what to type.</p>
+<input id="q" type="search" placeholder="Search effects: slack, count, glitch, chart..." autocomplete="off">
 <nav><button class="on" data-cat="">All</button>{buttons}</nav>
 <main>
 {chr(10).join(x for _, x in cards)}
 </main>
 <div id="lb"><video muted loop playsinline controls></video><code></code></div>
 <script>
-// Play a clip only while the mouse is over it
-document.querySelectorAll("main video").forEach(v => {{
-  v.onmouseenter = () => v.play().catch(() => {{}});
-  v.onmouseleave = () => {{ v.pause(); v.currentTime = 0; }};
+document.querySelectorAll(".m").forEach(m => {{
+  m.onmouseenter = () => {{
+    let v = m.querySelector("video");
+    if (!v) {{ v = document.createElement("video"); v.src = m.dataset.clip; v.muted = v.loop = v.playsInline = true; m.appendChild(v); }}
+    v.play().catch(() => {{}});
+  }};
+  m.onmouseleave = () => {{ const v = m.querySelector("video"); if (v) {{ v.pause(); v.currentTime = 0; }} }};
+  m.onclick = () => {{
+    lbv.src = m.dataset.clip; lbv.play();
+    lb.querySelector("code").textContent = m.closest("figure").querySelector("code").textContent;
+    lb.classList.add("on");
+  }};
 }});
 const lb = document.getElementById("lb"), lbv = lb.querySelector("video");
-document.querySelectorAll("main video").forEach(v => v.onclick = () => {{
-  lbv.src = v.getAttribute("src"); lbv.play();
-  lb.querySelector("code").textContent = v.closest("figure").querySelector("code").textContent;
-  lb.classList.add("on");
-}});
 lb.onclick = e => {{ if (e.target !== lbv) {{ lb.classList.remove("on"); lbv.pause(); }} }};
 document.addEventListener("keydown", e => {{ if (e.key === "Escape") {{ lb.classList.remove("on"); lbv.pause(); }} }});
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{{
-  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
-  document.querySelectorAll("figure,h2").forEach(f=>f.style.display=!b.dataset.cat||f.dataset.cat===b.dataset.cat?"":"none");
+let cat = "", q = "";
+function apply() {{
+  document.querySelectorAll("figure").forEach(f => f.style.display = (!cat || f.dataset.cat === cat) && (!q || f.dataset.q.includes(q)) ? "" : "none");
+  document.querySelectorAll("main h2").forEach(h => h.style.display = (!cat || h.dataset.cat === cat) && !q ? "" : "none");
+}}
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => {{
+  document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x === b));
+  cat = b.dataset.cat; apply();
 }});
-document.querySelectorAll("button.copy").forEach(b=>b.onclick=()=>{{
-  navigator.clipboard.writeText(b.dataset.prompt).then(()=>{{b.textContent="Copied. Paste it to Claude";b.classList.add("done");
-  setTimeout(()=>{{b.textContent="Copy request";b.classList.remove("done")}},2500)}});
+document.getElementById("q").oninput = e => {{ q = e.target.value.trim().toLowerCase(); apply(); }};
+document.querySelectorAll("button.copy").forEach(b => b.onclick = () => {{
+  navigator.clipboard.writeText(b.dataset.prompt).then(() => {{ b.textContent = "Copied. Paste it to Claude"; b.classList.add("done");
+  setTimeout(() => {{ b.textContent = "Copy request"; b.classList.remove("done") }}, 2500) }});
 }});
 </script>
 </body></html>
