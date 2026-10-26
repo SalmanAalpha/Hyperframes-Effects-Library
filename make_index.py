@@ -107,6 +107,15 @@ def make_it_yours(fx, cat):
             f'<button class="copy" data-prompt="{html.escape(prompt)}">Copy request</button>')
 
 
+pilot = set(re.findall(r"`([^`]+)`", brief.split("## The pilot list")[1].split("## Inputs")[0]))
+TABS = [
+    ("all", "All", lambda fx, c: True),
+    ("business", "Business", lambda fx, c: fx in pilot),
+    ("personal", "Personal", lambda fx, c: c in ("Captions", "Founder footage", "Camera", "Hand-drawn", "Headline text")),
+    ("data", "Data + product", lambda fx, c: c in ("Numbers", "Charts", "Product + screen")),
+    ("looks", "Looks + transitions", lambda fx, c: c in ("Transitions", "Shaders + textures", "Overlays", "Backgrounds", "3D", "Image galleries")),
+]
+
 cards = []
 for r in rows:
     fx, st = r["effect"], r["status"]
@@ -116,8 +125,8 @@ for r in rows:
     badge = f'<span class="badge {st}">{st}</span>' if st != "ok" else ""
     if not cards or cards[-1][0] != c:
         cards.append((c, f'<h2 data-cat="{html.escape(c)}">{html.escape(c)}</h2>'))
-    cards.append((c, f'''<figure data-cat="{html.escape(c)}" data-q="{html.escape((fx + ' ' + desc.get(fx, '')).lower())}">{media}
-  <figcaption><code>{fx}</code>{badge}<span class="cat">{html.escape(c)}</span>
+    cards.append((c, f'''<figure data-fx="{fx}" data-tabs="{' '.join(k for k, _, f in TABS if f(fx, c))}" data-cat="{html.escape(c)}" data-q="{html.escape((fx + ' ' + desc.get(fx, '')).lower())}">{media}
+  <figcaption><button class="star" title="Favorite">☆</button><code>{fx}</code>{badge}<span class="cat">{html.escape(c)}</span>
   <p>{html.escape(desc.get(fx, ""))}</p>{make_it_yours(fx, c)}</figcaption></figure>'''))
 
 FF = os.path.join("..", "ffmpeg-bin", "bin", "ffmpeg")
@@ -146,6 +155,10 @@ h2{{grid-column:1/-1;margin:18px 0 0;font:500 12px "DM Mono",monospace;text-tran
 figure{{margin:0;background:var(--card);border-radius:10px;overflow:hidden}}
 .m{{position:relative;background:#000;cursor:zoom-in}}.m img,.m video{{display:block;width:100%;height:auto}}
 .m video{{position:absolute;inset:0;height:100%;object-fit:contain;background:#000}}
+#tabs{{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 14px;border-bottom:1px solid #2a2a2a}}
+#tabs button{{border:0;border-radius:0;padding:10px 14px;color:var(--mute);font-size:14px;font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}}
+#tabs button.on{{background:none;color:var(--paper);border-bottom-color:var(--gold)}}
+.star{{float:right;border:0;padding:0 2px;font-size:18px;line-height:1;color:var(--mute);background:none}}.star.on{{color:var(--gold)}}
 #q{{width:100%;max-width:420px;background:#15181a;border:1px solid #333;color:var(--paper);border-radius:8px;padding:9px 12px;font:inherit;margin-bottom:12px}}.fail{{display:block;width:100%;aspect-ratio:16/9;background:#000}}
 .fail{{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#d77;padding:16px;text-align:center}}
 .fail small{{color:var(--mute);font-size:11px;word-break:break-word}}
@@ -164,6 +177,7 @@ p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-lin
 </style></head><body>
 <h1>Effects library</h1>
 <p class="sub">{len(rows)} HyperFrames registry effects, 5s draft previews, defaults untouched. {ok} rendered clean. Name in gold = what to type.</p>
+<div id="tabs">{"".join(f'<button data-tab="{k}"{" class=on" if k == "all" else ""}>{n}</button>' for k, n, _ in TABS)}<button data-tab="fav">Favorites ★</button></div>
 <input id="q" type="search" placeholder="Search effects: slack, count, glitch, chart..." autocomplete="off">
 <nav><button class="on" data-cat="">All</button>{buttons}</nav>
 <main>
@@ -187,10 +201,30 @@ document.querySelectorAll(".m").forEach(m => {{
 const lb = document.getElementById("lb"), lbv = lb.querySelector("video");
 lb.onclick = e => {{ if (e.target !== lbv) {{ lb.classList.remove("on"); lbv.pause(); }} }};
 document.addEventListener("keydown", e => {{ if (e.key === "Escape") {{ lb.classList.remove("on"); lbv.pause(); }} }});
-let cat = "", q = "";
+let cat = "", q = "", tab = "all";
+let favs = [];
+try {{ favs = JSON.parse(localStorage.getItem("fx-favs") || "[]"); }} catch (e) {{}}
+const saveFavs = () => {{ try {{ localStorage.setItem("fx-favs", JSON.stringify(favs)); }} catch (e) {{}} }};
+document.querySelectorAll("figure").forEach(f => {{
+  const b = f.querySelector(".star"), fx = f.dataset.fx;
+  const paint = () => {{ const on = favs.includes(fx); b.textContent = on ? "★" : "☆"; b.classList.toggle("on", on); }};
+  paint();
+  b.onclick = () => {{ favs = favs.includes(fx) ? favs.filter(x => x !== fx) : [...favs, fx]; saveFavs(); paint(); if (tab === "fav") apply(); }};
+}});
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => {{
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.toggle("on", x === b));
+  tab = b.dataset.tab; apply();
+}});
 function apply() {{
-  document.querySelectorAll("figure").forEach(f => f.style.display = (!cat || f.dataset.cat === cat) && (!q || f.dataset.q.includes(q)) ? "" : "none");
-  document.querySelectorAll("main h2").forEach(h => h.style.display = (!cat || h.dataset.cat === cat) && !q ? "" : "none");
+  const shown = new Set();
+  document.querySelectorAll("figure").forEach(f => {{
+    const inTab = tab === "fav" ? favs.includes(f.dataset.fx) : f.dataset.tabs.split(" ").includes(tab);
+    const on = inTab && (!cat || f.dataset.cat === cat) && (!q || f.dataset.q.includes(q));
+    f.style.display = on ? "" : "none";
+    if (on) shown.add(f.dataset.cat);
+  }});
+  document.querySelectorAll("main h2").forEach(h => h.style.display = shown.has(h.dataset.cat) ? "" : "none");
+  document.querySelectorAll("nav button").forEach(b => b.style.display = !b.dataset.cat || [...document.querySelectorAll("figure")].some(f => f.dataset.cat === b.dataset.cat && (tab === "fav" ? favs.includes(f.dataset.fx) : f.dataset.tabs.split(" ").includes(tab))) ? "" : "none");
 }}
 document.querySelectorAll("nav button").forEach(b => b.onclick = () => {{
   document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x === b));
