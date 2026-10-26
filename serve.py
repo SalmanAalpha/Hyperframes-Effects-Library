@@ -41,6 +41,11 @@ class Handler(SimpleHTTPRequestHandler):
             outputfile.write(chunk)
             n -= len(chunk)
 
+    def end_headers(self):
+        # Never let the browser reuse an old copy of the page or a clip
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def log_message(self, *a):
         pass
 
