@@ -10,7 +10,12 @@ for row in re.findall(r"^\| ([^|]+?) \| (`.+?) \|$", brief, re.M):
 
 cat_json = subprocess.run(["npx", "-y", "hyperframes@0.8.74", "catalog", "--json"],
                           capture_output=True, text=True).stdout
-catalog = json.loads(cat_json)
+# Fall back to the last saved catalog if npx returns nothing (offline, registry hiccup)
+try:
+    catalog = json.loads(cat_json)
+    json.dump(catalog, open("catalog.json", "w"))
+except ValueError:
+    catalog = json.load(open("catalog.json"))
 desc = {i["name"]: i.get("description", "") for i in catalog}
 
 # Effects outside the brief's pilot table get a category from their catalog tags
@@ -106,7 +111,7 @@ cards = []
 for r in rows:
     fx, st = r["effect"], r["status"]
     c = cats.get(fx, "Other")
-    media = (f'<video src="clips/{r["category"]}/{fx}.mp4" poster="thumbs/{r["category"]}/{fx}.jpg" autoplay muted loop playsinline preload="metadata"></video>'
+    media = (f'<video src="clips/{r["category"]}/{fx}.mp4" poster="thumbs/{r["category"]}/{fx}.jpg" muted loop playsinline preload="none"></video>'
              if st != "failed" else f'<div class="fail">Failed<br><small>{html.escape(r["note"])}</small></div>')
     badge = f'<span class="badge {st}">{st}</span>' if st != "ok" else ""
     if not cards or cards[-1][0] != c:
@@ -155,6 +160,11 @@ p{{margin:6px 0 0;font-size:12.5px;color:#c9c5bc;display:-webkit-box;-webkit-lin
 </main>
 <div id="lb"><video muted loop playsinline controls></video><code></code></div>
 <script>
+// Play a clip only while the mouse is over it
+document.querySelectorAll("main video").forEach(v => {{
+  v.onmouseenter = () => v.play().catch(() => {{}});
+  v.onmouseleave = () => {{ v.pause(); v.currentTime = 0; }};
+}});
 const lb = document.getElementById("lb"), lbv = lb.querySelector("video");
 document.querySelectorAll("main video").forEach(v => v.onclick = () => {{
   lbv.src = v.getAttribute("src"); lbv.play();
