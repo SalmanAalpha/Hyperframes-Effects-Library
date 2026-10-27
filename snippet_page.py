@@ -18,6 +18,14 @@ if os.path.exists(test):
 else:
     m = re.search(r"Markup:\s*\n(.*?)\n\s*\n", src, re.S)
     demo = "\n".join(l.strip() for l in m.group(1).splitlines()) if m else ""
+    if not demo:
+        # Prose usage ("wrap your text with class=..."): sample headline carrying
+        # every class and data- attribute the header comment asks for
+        head = (re.match(r"\s*<!--(.*?)-->", src, re.S) or re.match("", "")).group(1) or ""
+        classes = " ".join(dict.fromkeys(c for cs in re.findall(r'class="([^"]+)"', head) for c in cs.split()))
+        attrs = " ".join(dict.fromkeys(re.findall(r"\b(data-hf-[a-z-]+)", head)))
+        demo = (f'<h1 class="{classes}" {attrs} style="font:800 120px/1.05 Inter,system-ui,sans-serif;'
+                f'letter-spacing:-0.03em;color:#18181b;margin:0">Your headline here</h1>')
 
 m = re.search(r"Timeline integration[^\n]*\n(.*?)-->", src, re.S)
 anim = m.group(1).replace("startTime", "0.5") if m else ""

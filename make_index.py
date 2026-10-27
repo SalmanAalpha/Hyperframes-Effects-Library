@@ -1,6 +1,6 @@
 """Build index.html from RESULTS.csv, the brief's category table and the catalog.
 Run: python3 make_index.py   (from motion/effects-library/)"""
-import csv, html, json, re, subprocess
+import csv, glob, html, json, re, subprocess
 
 brief = open("BRIEF.md").read()
 cats = {}
@@ -36,6 +36,24 @@ TAG_RULES = [
     ("Overlays", {"overlay"}),
     ("Headline text", {"typography", "text", "title-card", "reveal"}),
 ]
+# Hand-sorted: effects whose tags matched no rule
+OVERRIDE = {
+    "Product + screen": "flowchart flowchart-vertical mk-placeholder-grid multi-device-splay onboarding-stepper-flow settings-toggle-flow signup-flow pull-to-refresh swipe-rail modal-morph spotlight-card terminal-simulator vpn-youtube-spot yt-vertical-fill grid-card-assemble",
+    "Chat + social proof": "x-follow-card avatar-cloud heygen-avatar-promo-card blue-sweater-intro-video",
+    "Close": "logo-outro yt-logo-intro",
+    "Numbers": "mk-usage-arc",
+    "Charts": "mk-specs-list",
+    "Headline text": "blur-in line-swap text-shimmer variable-font-flex particle-text-dissolve stitched-text-draw shutter-slam separator",
+    "Image galleries": "cinemagraph",
+    "Maps": "north-korea-locked-down nyc-paris-flight",
+    "Pain + problem": "overwhelm-surround radial-surround",
+    "Motion tricks": "arc-motion-path beat-accent beat-timeline camera-rig-depth-stack confetti echo-smear echo-trail facet-morph gloss-sweep keyframe-scrub-stack mk-placeholder-grid motion-blur outline-draw physical-exit slit-scan-reveal split-tilt-cards stagger-cascade stagger-lattice stop-motion-cadence svg-line-draw-loader velocity-throw-snap gooey-split lottie-character-walk orbit-card",
+    "Backgrounds": "mesh-gradient-bg",
+}
+for c, names in OVERRIDE.items():
+    for n in names.split():
+        if n not in cats:
+            cats[n] = c
 for i in catalog:
     if i["name"] not in cats:
         tags = set(i.get("tags", []))
@@ -48,8 +66,11 @@ rows = list(csv.DictReader(open("RESULTS.csv")))
 for r in rows:
     r["category"] = slug(cats.get(r["effect"], "other"))
     for d, ext in (("clips", "mp4"), ("thumbs", "jpg")):
-        flat, dest = f"{d}/{r['effect']}.{ext}", f"{d}/{r['category']}/{r['effect']}.{ext}"
-        if os.path.exists(flat):
+        dest = f"{d}/{r['category']}/{r['effect']}.{ext}"
+        # loose file, or one sitting in an old category folder
+        found = [p for p in [f"{d}/{r['effect']}.{ext}"] + glob.glob(f"{d}/*/{r['effect']}.{ext}") if os.path.exists(p) and p != dest]
+        flat = found[0] if found else None
+        if flat:
             os.makedirs(os.path.dirname(dest), exist_ok=True)
             os.replace(flat, dest)
 with open("RESULTS.csv", "w", newline="") as f:
@@ -113,7 +134,7 @@ TABS = [
     ("business", "Business", lambda fx, c: fx in pilot),
     ("personal", "Personal", lambda fx, c: c in ("Captions", "Founder footage", "Camera", "Hand-drawn", "Headline text")),
     ("data", "Data + product", lambda fx, c: c in ("Numbers", "Charts", "Product + screen")),
-    ("looks", "Looks + transitions", lambda fx, c: c in ("Transitions", "Shaders + textures", "Overlays", "Backgrounds", "3D", "Image galleries")),
+    ("looks", "Looks + transitions", lambda fx, c: c in ("Transitions", "Shaders + textures", "Overlays", "Backgrounds", "3D", "Image galleries", "Motion tricks", "Maps")),
 ]
 
 cards = []

@@ -55,10 +55,26 @@ print(os.path.relpath(f[0],root) if f else "", w.group(1) if w else 1920, h.grou
   res=landscape; [ "$fh" -gt "$fw" ] && res=portrait; [ "$fh" = "$fw" ] && res=square
   testlayer=""; [ -f "test-content/$fx.html" ] && testlayer=$(cat "test-content/$fx.html")
   [ -n "$src" ] || { log "$fx" failed 0 "add failed or not in catalog"; continue; }
-  cid=$(grep -o 'data-composition-id="[^"]*"' "$dir/$src" | head -1 | cut -d'"' -f2)
+  # Composition id, ignoring ids that only appear inside HTML comments (usage examples)
+  cid=$(python3 -c 'import re,sys; s=re.sub(r"<!--.*?-->","",open(sys.argv[1]).read(),flags=re.S); m=re.search(r"data-composition-id=\"([^\"]*)\"",s); print(m.group(1) if m else "")' "$dir/$src")
   python3 knobs.py "$fx" "$dir/$src" 2>>"$L"
   mode=""
-  if [ -z "$cid" ]; then
+  if [ -n "$cid" ] && ! grep -q '<template' "$dir/$src" && [ -z "$testlayer" ]; then
+    # A complete scene (its own <html>, no <template>): render it as the page itself.
+    # Mounting it inside a wrapper breaks its module scripts.
+    mode="standalone; "
+    if grep -qi '<html' "$dir/$src"; then
+      # Drop the registry comment above <!doctype> (the checker rejects it), and
+      # point relative paths at the scene's own folder when it lives in a subfolder
+      sub=$(dirname "$src")
+      python3 -c 'import re,sys; s=open(sys.argv[1]).read(); s=re.sub(r"^\s*<!--.*?-->\s*","",s,count=1,flags=re.S); b=sys.argv[2]
+if b not in ("compositions",): s=re.sub(r"(<head[^>]*>)", r"\1<base href="+b+"/>", s, count=1)
+open(sys.argv[3],"w").write(s)' "$dir/$src" "$sub" "$dir/index.html"
+    else
+      # Fragment scene (no <html>): wrap it in a minimal page
+      { printf '<!doctype html>\n<html lang="en"><head><meta charset="UTF-8" />\n<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>\n<style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:%spx;height:%spx;overflow:hidden;background:#0a0a0a}</style></head>\n<body>\n' "$fw" "$fh"; cat "$dir/$src"; printf '\n</body></html>\n'; } > "$dir/index.html"
+    fi
+  elif [ -z "$cid" ]; then
     # Bare snippet component: paste it plus the example markup from its header comment
     mode="snippet; "
     python3 snippet_page.py "$dir/$src" "$fx" > "$dir/index.html" 2>>"$L" || { log "$fx" failed 0 "snippet wiring failed"; continue; }
@@ -97,5 +113,7 @@ EOF
   [ "$SKIP_DONE" = 1 ] && rm -rf "$dir"
 done
 
+# Clips flagged empty from the 2.5s frame alone get a 5-frame second look
+python3 recheck_empty.py
 # Sort into clips/<category>/ and thumbs/<category>/, then rebuild the gallery
 python3 make_index.py
