@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Video Creation System</title>
+<style>
+:root{--page:#f6f7f9;--ink:#161b26;--sec:#4b5565;--muted:#687182;--blue:#2a78d6;--line:#e3e6eb;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--page:#0f1218;--ink:#eef1f6;--sec:#b4bccb;--muted:#8a93a5;--line:#273041;--card:#161b26}}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:16px/1.5 -apple-system,"Manrope",system-ui,sans-serif}
+main{max-width:1060px;margin:0 auto;padding:40px 16px 80px}
+h1{font-size:40px;letter-spacing:-.03em;margin:0 0 6px}h2{font-size:24px;letter-spacing:-.02em;margin:48px 0 12px}
+.lead{color:var(--sec);font-size:18px;max-width:760px}
+.tag{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+@media(max-width:760px){.flow{grid-template-columns:1fr 1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;position:relative}
+.step b{display:block;font-size:17px;margin:4px 0}.step .n{color:var(--blue);font-weight:800}
+.step p{margin:0;color:var(--sec);font-size:14px}.step code{font-size:12px}
+.you{border-color:var(--blue);box-shadow:0 0 0 2px color-mix(in srgb,var(--blue) 25%,transparent)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-weight:700;white-space:nowrap}code{background:color-mix(in srgb,var(--blue) 10%,transparent);padding:1px 5px;border-radius:5px}
+.note{background:var(--card);border-left:4px solid var(--blue);padding:12px 16px;border-radius:8px;color:var(--sec)}
+.wrap{overflow-x:auto}
+</style></head><body><main>
+<div class="tag">Aalpha · Headroom · 2026-11-02</div>
+<h1>How the video machine works</h1>
+<p class="lead">It works like a print shop where every frame is a web page. Claude writes each scene in HTML, a robot browser photographs it 30 times a second, and those photos become the MP4. Every ad is a text file, so changing a word or a colour means editing the file and rendering again.</p>
+
+<h2>The line, start to finish</h2>
+<div class="flow">
+ <div class="step you"><span class="n">0</span><b>You drop reels</b><p>A reel or a folder. You say "recreate this" or <code>/recreate-reel</code>.</p></div>
+ <div class="step"><span class="n">1</span><b>Breakdown</b><p>Frames every 0.5s, scene cuts, transcript. Claude writes <code>BEATS.md</code>: what moves, when, how fast.</p></div>
+ <div class="step"><span class="n">2</span><b>Angle + proof</b><p>One Limitless copy angle and one verified proof per ad, rotated so ads don't repeat.</p></div>
+ <div class="step"><span class="n">3</span><b>Script + copy check</b><p>Black Card lines word for word. <code>check_copy.py</code> flags new lines, banned words, 108/84 and the 30-day guarantee.</p></div>
+ <div class="step"><span class="n">4</span><b>Build</b><p>Starter template + moves library + our product clips + HyperFrames effects. Animation is GSAP.</p></div>
+ <div class="step"><span class="n">5</span><b>Render</b><p><code>render.sh</code>: one render at a time (a lock file), 1080x1920, 30fps, silent.</p></div>
+ <div class="step"><span class="n">6</span><b>Self-check</b><p>12-frame contact sheet. Fix overlap, cut-off text, sparse frames, missing SAMPLE chips.</p></div>
+ <div class="step you"><span class="n">7</span><b>You review</b><p>Claude sends the MP4 and its flags. "Good, next one" or "changes first". "Finished" shelves it.</p></div>
+</div>
+<p class="note"><b>Two modes.</b> One at a time (the default): you see each ad before the next one starts. Batch: one builder per reel, all running at once. They wait their turn for the render, so the Mac isn't hit with 7 renders together.</p>
+
+<h2>What's in this folder</h2>
+<p class="note"><b>Start here:</b> new computer? Follow <code>SETUP.md</code>, then run the self-test. To make a video, open Claude Code in this folder and type <code>/recreate-reel &lt;reel or folder&gt;</code>.</p>
+<div class="wrap"><table>
+<tr><th>Path</th><th>What it is</th><th>Its job in the line</th></tr>
+<tr><td>CLAUDE.md</td><td>The rules Claude reads first: kit header, remembered rules (<code>rules/</code>), project rules (claims list, words to avoid, audience)</td><td>Guardrails on every step</td></tr>
+<tr><td>SETUP.md</td><td>One-time install steps + the self-test</td><td>Get a new computer running</td></tr>
+<tr><td>.claude/skills/recreate-reel</td><td><code>SKILL.md</code> (steps), <code>reference/</code> (look, assets, copy angles, proofs, motion rules, used lines), <code>scripts/</code>, <code>moves/</code> (15 animations + demos), <code>template/</code></td><td>The recipe card. Runs steps 1-8.</td></tr>
+<tr><td>.claude/skills/video-script, finished</td><td>Script-from-catalog skill; the "finished" shelf</td><td>Founder/VO scripts; shelving approved renders</td></tr>
+<tr><td>research/limitless-black-card</td><td>Black Card copy (Limitless) + 30s/60s cuts</td><td>Every word on screen (steps 2-3)</td></tr>
+<tr><td>research/pipeline/catalog</td><td><code>clips.json</code> (80 clips) + page</td><td>Menu of product footage (step 4)</td></tr>
+<tr><td>motion/... (clip folders)</td><td>Every clip the catalog lists, at the same paths</td><td>Product footage (step 4)</td></tr>
+<tr><td>motion/site-stills-2026-11-02</td><td>Screenshots of headroom.aalpha.ai + the logo</td><td>Look (step 4)</td></tr>
+<tr><td>motion/ffmpeg-bin</td><td>FFmpeg for macOS Apple silicon</td><td>Frames, sheets (steps 1, 6)</td></tr>
+<tr><td>motion/quran-dots-study</td><td>DotField dot-grid engine + font</td><td>Dot-grid ads (optional)</td></tr>
+<tr><td>motion/inspo-recreate</td><td>The 7 AAL-14 ads: each with <code>BEATS.md</code>, <code>SCRIPT.md</code>, <code>index.html</code> (the ad itself), renders. <code>REVIEW.md</code> = index</td><td>Worked examples + output</td></tr>
+<tr><td>rules/</td><td>Claude's remembered rules from the main project (Black Card is the source, no 108/84, latest look, agent side first, no burned captions...)</td><td>Loaded by CLAUDE.md</td></tr>
+<tr><td>KIT-VERSION.txt</td><td>When this copy was exported</td><td>Know if it's stale</td></tr>
+</table></div>
+
+<h2>Tools underneath</h2>
+<div class="wrap"><table>
+<tr><th>Tool</th><th>What it does</th></tr>
+<tr><td>HyperFrames 0.8.74</td><td>Turns an HTML page with a timeline into an MP4 (headless Chrome + FFmpeg). Run with <code>npx hyperframes@0.8.74 render</code>.</td></tr>
+<tr><td>GSAP</td><td>The animation library inside each HTML file: typing, pops, wipes, counters, camera pushes.</td></tr>
+<tr><td>FFmpeg</td><td>Frames, contact sheets, cuts, speed changes. Lives in <code>motion/ffmpeg-bin/</code>.</td></tr>
+<tr><td>Groq Whisper</td><td>Transcribes the source reel (via the watch skill).</td></tr>
+<tr><td>Claude subagents</td><td>Parallel builders in batch mode. Each gets the same brief, and Claude checks each result.</td></tr>
+<tr><td>Linear (AAL) + git</td><td>One ticket per batch, a commit per ad or batch. Nothing is pushed or posted without your yes.</td></tr>
+</table></div>
+
+<h2>This is a copy</h2>
+<p class="note">This folder is exported from the working project <code>~/Documents/Work/Claude/Aalpha</code> by <code>.claude/skills/recreate-reel/scripts/export_kit.sh</code>. It runs on its own, but changes made here don't flow back. To refresh it, run that script on the main computer. Not included: Linear, git history, API keys (each user adds their own Groq key), the 319 MB effects-library previews.</p>
+</main></body></html>

@@ -1,0 +1,124 @@
+/* Headroom moves library: styles for the elements HRMoves builds.
+   Every class starts with .hr- so it never clashes with an ad's own CSS.
+   Colours fall back to the headroom.aalpha.ai look if the ad has no tokens. */
+
+/* ---------- shared ---------- */
+.hr-w { display:inline-block; }
+.hr-abs { position:absolute; }
+
+/* ---------- typeBox: dashed selection box, corner handles, typed text, caret ---------- */
+.hr-tbox { position:relative; border:3px dashed #8b93a1; padding:30px 44px; background:rgba(255,255,255,0.0); }
+.hr-tbox.solid { border:1px solid var(--line, #e3e6eb); background:#fff; border-radius:30px; box-shadow:0 30px 80px rgba(22,27,38,0.10), 0 4px 14px rgba(22,27,38,0.06); }
+.hr-tbox .hr-h { position:absolute; width:18px; height:18px; background:#fff; border:3px solid var(--ink, #161b26); border-radius:3px; }
+.hr-tbox .hr-h.a { left:-11px; top:-11px; } .hr-tbox .hr-h.b { right:-11px; top:-11px; }
+.hr-tbox .hr-h.c { left:-11px; bottom:-11px; } .hr-tbox .hr-h.d { right:-11px; bottom:-11px; }
+.hr-tbox .hr-tx { font-weight:600; font-size:56px; line-height:1.2; letter-spacing:-0.03em; color:var(--ink, #161b26); }
+.hr-caret { display:inline-block; width:4px; height:0.95em; background:var(--blue, #2a78d6); vertical-align:-0.12em; margin-left:3px; }
+.hr-cursor { position:absolute; left:0; top:0; width:56px; height:56px; z-index:20; }
+
+/* ---------- blobWipe ---------- */
+.hr-blob { position:absolute; width:760px; height:760px; }
+.hr-blob path { fill:var(--blue, #2a78d6); }
+
+/* ---------- ribbonSweep ---------- */
+.hr-ribbon { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:visible; }
+
+/* ---------- underlineMorph ---------- */
+.hr-ul { position:absolute; left:0; right:0; bottom:-10px; height:8px; background:var(--blue, #2a78d6); border-radius:4px; transform-origin:0 50%; transform:scaleX(0); }
+.hr-sq { position:absolute; left:0; top:0; width:140px; height:140px; background:var(--blue, #2a78d6); opacity:0; z-index:10; }
+
+/* ---------- glyphStorm ---------- */
+.hr-storm { position:absolute; inset:0; overflow:hidden; }
+.hr-storm span { position:absolute; left:0; top:0; font-weight:600; line-height:1; opacity:0; will-change:transform,opacity; }
+
+/* ---------- wordBuild / highlightSweep ---------- */
+.hr-sweep { background:linear-gradient(90deg, #2a78d6 0%, #2a78d6 38%, #a9d0ff 50%, #2a78d6 62%, #2a78d6 100%); background-size:320% 100%; background-position:100% 0;
+  -webkit-background-clip:text; background-clip:text; color:transparent !important; }
+
+/* ---------- splitFlap ---------- */
+.hr-flaps { display:flex; justify-content:center; gap:10px; }
+.hr-flap { position:relative; width:110px; height:190px; border-radius:16px; background:#f1f4f8; border:2px solid var(--line, #e3e6eb); font-weight:800; font-size:140px; letter-spacing:-0.04em; line-height:190px; text-align:center; overflow:hidden; color:var(--ink, #161b26); }
+.hr-flap::after { content:""; position:absolute; left:0; right:0; top:94px; height:2px; background:#d6dde7; }
+.hr-flap.sep { width:40px; background:none; border:none; }
+.hr-flap.sep::after { display:none; }
+.hr-flap.on { color:var(--blue, #2a78d6); }
+
+/* ---------- pileBurst: notification cards ---------- */
+.hr-nc { position:absolute; width:470px; height:118px; background:#fff; border-radius:26px; border:1px solid var(--line, #e3e6eb);
+  box-shadow:0 18px 50px rgba(22,27,38,0.10), 0 2px 8px rgba(22,27,38,0.05); display:flex; align-items:center; gap:18px; padding:0 26px; opacity:0; }
+.hr-nc .ic { width:48px; height:48px; flex:none; border-radius:12px; color:#fff; font-weight:800; font-size:24px; display:flex; align-items:center; justify-content:center; }
+.hr-nc .ic img { width:48px; height:48px; }
+.hr-nc .t { font-weight:700; font-size:22px; letter-spacing:-0.01em; color:var(--ink, #161b26); }
+.hr-nc .t span { font-weight:500; color:var(--muted, #687182); margin-left:8px; font-size:19px; }
+.hr-nc .s { font-weight:500; font-size:22px; color:var(--sec, #4b5565); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:340px; }
+.hr-nc .dot { position:absolute; right:22px; top:22px; width:14px; height:14px; border-radius:50%; background:var(--blue, #2a78d6); }
+
+/* ---------- orbGather ---------- */
+.hr-orbw { position:absolute; width:0; height:0; }
+.hr-orb-glow { position:absolute; left:-260px; top:-260px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(42,120,214,0.30) 0%, rgba(42,120,214,0.10) 45%, rgba(42,120,214,0) 70%); opacity:0; }
+.hr-orb-ring { position:absolute; left:-190px; top:-190px; width:380px; height:380px; border-radius:50%; border:2px solid rgba(42,120,214,0.35); opacity:0; }
+.hr-orb { position:absolute; left:-110px; top:-110px; width:220px; height:220px; border-radius:50%; opacity:0;
+  background:radial-gradient(circle at 35% 30%, #8ec0ff 0%, #2a78d6 55%, #1c5cab 100%); box-shadow:0 20px 60px rgba(42,120,214,0.45); }
+.hr-orb-tag { position:absolute; left:-260px; width:520px; top:150px; text-align:center; font-weight:700; font-size:24px; letter-spacing:0.2em; color:var(--blue, #2a78d6); opacity:0; }
+.hr-chip { position:absolute; display:flex; align-items:center; gap:14px; height:96px; padding:0 34px; background:#fff; border:1px solid var(--line, #e3e6eb); border-radius:48px;
+  box-shadow:0 14px 40px rgba(22,27,38,0.09); font-weight:700; font-size:34px; letter-spacing:-0.02em; color:var(--ink, #161b26); white-space:nowrap; opacity:0; }
+.hr-chip b { width:16px; height:16px; border-radius:50%; background:var(--blue, #2a78d6); }
+.hr-lines { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:visible; }
+
+/* ---------- agentTags: task list card ---------- */
+.hr-card { background:#fff; border:1px solid var(--line, #e3e6eb); border-radius:40px; box-shadow:0 30px 80px rgba(22,27,38,0.10), 0 4px 14px rgba(22,27,38,0.05); overflow:hidden; }
+.hr-card .hd { display:flex; align-items:center; gap:18px; padding:34px 36px 26px; font-weight:700; font-size:32px; letter-spacing:-0.02em; color:var(--ink, #161b26); }
+.hr-card .hd i { width:22px; height:22px; border-radius:50%; background:var(--blue, #2a78d6); }
+.hr-card .hd span { margin-left:auto; font-weight:600; font-size:22px; color:var(--muted, #687182); letter-spacing:0.08em; }
+.hr-row { display:flex; align-items:center; height:106px; padding:0 36px; border-top:1px solid var(--line, #e3e6eb); position:relative; opacity:0; }
+.hr-row .nm { font-weight:700; font-size:33px; letter-spacing:-0.025em; color:var(--ink, #161b26); position:relative; }
+.hr-row .bar { margin-left:auto; width:250px; height:22px; border-radius:11px; background:#eef0f4; position:relative; overflow:hidden; }
+.hr-row .bar i { position:absolute; left:0; top:0; bottom:0; border-radius:11px; background:#9aa3b2; transform-origin:0 50%; transform:scaleX(0); }
+.hr-row .ag { position:absolute; right:310px; display:flex; align-items:center; gap:10px; background:#eaf2fc; color:#1c5cab; border-radius:999px; padding:10px 20px; font-weight:700; font-size:23px; transform:scale(0); }
+.hr-row .ag i { width:12px; height:12px; border-radius:50%; background:var(--blue, #2a78d6); display:inline-block; }
+.hr-row .tint { position:absolute; inset:0; background:rgba(42,120,214,0.07); opacity:0; }
+
+/* ---------- stampSlam ---------- */
+.hr-stamp { position:absolute; font-weight:800; font-size:48px; letter-spacing:0.12em; color:var(--blue, #2a78d6); border:5px solid var(--blue, #2a78d6); border-radius:14px; padding:10px 28px; background:rgba(255,255,255,0.88); opacity:0; white-space:nowrap; }
+
+/* ---------- ringCountdown ---------- */
+.hr-ringbox { position:relative; }
+.hr-ringbox svg { position:absolute; left:0; top:0; overflow:visible; }
+.hr-ringnum { position:absolute; left:0; right:0; text-align:center; font-weight:600; letter-spacing:-0.06em; line-height:1; color:var(--ink, #161b26); }
+.hr-ringunit { position:absolute; left:0; right:0; text-align:center; font-weight:600; font-size:40px; color:var(--muted, #687182); }
+
+/* ---------- chapterHud ---------- */
+.hr-hud { position:absolute; inset:0; pointer-events:none; color:var(--ink, #161b26); z-index:30; }
+.hr-hud .c { position:absolute; width:46px; height:46px; border-color:currentColor; border-style:solid; opacity:0.35; }
+.hr-hud .tl { left:44px; top:44px; border-width:3px 0 0 3px; } .hr-hud .tr { right:44px; top:44px; border-width:3px 3px 0 0; }
+.hr-hud .bl { left:44px; bottom:44px; border-width:0 0 3px 3px; } .hr-hud .br { right:44px; bottom:44px; border-width:0 3px 3px 0; }
+.hr-hud .lab { position:absolute; top:62px; font-weight:700; font-size:20px; letter-spacing:0.22em; opacity:0.6; }
+.hr-hud .l { left:110px; } .hr-hud .r { right:110px; text-align:right; }
+.hr-hud .r span { position:absolute; right:0; top:0; white-space:nowrap; opacity:0; }
+.hr-hud .prog { position:absolute; left:110px; right:110px; bottom:62px; height:4px; border-radius:2px; background:rgba(22,27,38,0.1); overflow:hidden; }
+.hr-hud .prog i { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin:0 50%; transform:scaleX(0); background:var(--blue, #2a78d6); }
+
+/* ---------- endCard (standard Headroom end card) ---------- */
+.hr-end { position:absolute; left:0; right:0; top:690px; text-align:center; color:var(--ink, #161b26); }
+.hr-end .mark { width:150px; height:150px; margin:0 auto; display:block; }
+.hr-end .word { font-weight:700; font-size:76px; letter-spacing:-0.045em; margin-top:18px; }
+.hr-end .word span { font-weight:600; font-size:34px; color:var(--muted, #687182); letter-spacing:-0.02em; margin-left:10px; }
+.hr-end .g { font-weight:600; font-size:42px; letter-spacing:-0.025em; line-height:1.25; margin:56px auto 0; width:820px; }
+.hr-end .g span { color:var(--blue, #2a78d6); }
+.hr-end .pill { display:inline-block; margin-top:48px; background:var(--ink, #161b26); color:#fff; font-weight:600; font-size:36px; padding:26px 60px; border-radius:999px; }
+.hr-reveal { position:absolute; inset:0; background:var(--page, #f6f7f9); }
+
+/* AAL-16: wordFlips, stackSlam, lightSmear (yp.motionstudio) */
+.hr-flipbg { position:absolute; inset:0; }
+.hr-flip { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; }
+.hr-flip-t, .hr-flip-echo { font-weight:650; letter-spacing:-0.05em; line-height:1; padding:0 60px; }
+.hr-flip-echo { position:absolute; filter:blur(20px); }
+.hr-onB { color:#fff; }
+.hr-onP { color:#161b26; }
+.hr-onP .hr-flip-echo { color:#2a78d6; }
+.hr-stack { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#161b26; }
+.hr-stack-sm { font-weight:600; font-size:64px; letter-spacing:-0.035em; line-height:1.1; }
+.hr-stack-xl { font-weight:700; font-size:230px; letter-spacing:-0.06em; line-height:0.95; color:#2a78d6; }
+.hr-caret-b { display:inline-block; width:6px; height:62px; background:#2a78d6; margin-left:6px; vertical-align:-8px; }
+.hr-smear { position:absolute; left:0; top:0; width:560px; height:1920px; pointer-events:none; z-index:30; }
+.hr-smear i { position:absolute; display:block; background:#fff; border-radius:50%; filter:blur(60px); }

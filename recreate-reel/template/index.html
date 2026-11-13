@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Headroom ad starter. Copy this folder, rename it, then replace every REPLACE line.
+         moves.js / moves.css here are copies of the skill's moves library (see moves/README.md). -->
+    <script src="vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="moves.css" />
+    <style>
+      @font-face { font-family: "Manrope"; src: url("fonts/manrope-latin.woff2") format("woff2"); font-weight: 200 800; }
+      /* look tokens: headroom.aalpha.ai (2026-11-02) */
+      :root { --page:#f6f7f9; --ink:#161b26; --sec:#4b5565; --muted:#687182; --blue:#2a78d6; --line:#e3e6eb; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--page); }
+      #stage { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:"Manrope", sans-serif; color:var(--ink); background:var(--page); }
+      .scene { position:absolute; inset:0; opacity:0; }
+      .layer { position:absolute; inset:0; }
+      .blue { color:var(--blue); }
+      .big { font-weight:600; font-size:66px; letter-spacing:-0.035em; line-height:1.15; }
+      .mid { font-weight:600; font-size:50px; letter-spacing:-0.03em; line-height:1.25; color:var(--sec); }
+      /* SAMPLE chip: put it on every made-up app view, sample names or illustrative numbers */
+      .sample { position:absolute; z-index:40; font-weight:700; font-size:20px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); background:#fff; border:1px solid var(--line); border-radius:999px; padding:8px 18px; }
+
+      #hook { position:absolute; left:80px; right:80px; top:820px; text-align:center; }
+      #ask { position:absolute; left:90px; top:860px; width:900px; }
+      #askHead { position:absolute; left:80px; right:80px; top:640px; text-align:center; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="main" data-start="0" data-duration="8" data-width="1080" data-height="1920" data-fps="30">
+      <div id="all" class="clip" data-start="0" data-duration="8" data-track-index="0" style="position:absolute; inset:0" data-layout-allow-overflow data-layout-allow-occlusion>
+
+        <!-- scene 1 (0 - 2.8): hook. REPLACE with a Black Card line, word for word -->
+        <div id="s1" class="scene">
+          <div id="hook" class="big">REPLACE: hook line from the Black Card, <span class="blue">key words in blue.</span></div>
+        </div>
+
+        <!-- scene 2 (2.8 - 5.6): REPLACE with your beat -->
+        <div id="s2" class="scene">
+          <div id="askHead" class="mid">REPLACE: setup line</div>
+          <div id="ask"></div>
+          <div class="sample" style="left:60px; top:80px">SAMPLE</div>
+        </div>
+
+        <!-- end card (5.6 - 8): locked copy, built by HRMoves.endCard -->
+        <div id="end" class="layer" style="opacity:0"></div>
+      </div>
+    </div>
+
+    <script src="moves.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const DUR = 8;
+      const tl = gsap.timeline({ paused: true });
+      tl.set({}, {}, DUR);
+      const M = HRMoves;
+
+      // scene windows [id, in, out]; each fades in/out with a short blur
+      const SC = [["#s1", 0, 2.8], ["#s2", 2.8, 5.6]];
+      SC.forEach(function (s) {
+        tl.fromTo(s[0], { opacity: 0 }, { opacity: 1, duration: 0.2 }, s[1]);
+        M.blurOut(tl, s[0], s[2] - 0.3, { d: 0.3 });
+      });
+
+      // 1. hook builds word by word
+      M.wordBuild(tl, "#hook", 0.15, { s: 0.1 });
+
+      // 2. setup line, then a prompt box types the ask
+      M.blurIn(tl, "#askHead", 2.9);
+      M.typeBox(tl, "#ask", 3.2, { text: "REPLACE: what the owner would type", style: "solid", drag: 0, fontSize: 46 });
+
+      // 3. end card
+      M.endCard(tl, "#end", 5.6);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

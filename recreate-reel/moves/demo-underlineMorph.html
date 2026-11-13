@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>demo: underlineMorph</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="moves.css" />
+    <style>
+      @font-face { font-family: "Manrope"; src: url("fonts/manrope-latin.woff2") format("woff2"); font-weight: 200 800; }
+      :root { --page:#f6f7f9; --ink:#161b26; --sec:#4b5565; --muted:#687182; --blue:#2a78d6; --line:#e3e6eb; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--page); }
+      #stage { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:"Manrope", sans-serif; color:var(--ink); background:var(--page); }
+      .blue { color:var(--blue); }
+      .big { font-weight:600; font-size:66px; letter-spacing:-0.035em; line-height:1.15; }
+      .mid { font-weight:600; font-size:50px; letter-spacing:-0.03em; line-height:1.25; color:var(--sec); }
+      .layer { position:absolute; inset:0; }
+      .demo-label { position:absolute; left:60px; top:1740px; font-weight:700; font-size:22px; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; }
+      .sample { position:absolute; font-weight:700; font-size:20px; letter-spacing:0.16em; color:var(--muted); background:#fff; border:1px solid var(--line); border-radius:999px; padding:8px 18px; }
+      #hook { position:absolute; left:70px; right:70px; top:820px; text-align:center; }
+      #brand { position:absolute; left:0; right:0; top:690px; text-align:center; }
+      #brand svg { width:260px; height:260px; }
+      #brand .word { font-weight:700; font-size:112px; letter-spacing:-0.045em; margin-top:10px; opacity:0; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="main" data-start="0" data-duration="4.5" data-width="1080" data-height="1920" data-fps="30">
+      <div id="all" class="clip" data-start="0" data-duration="4.5" data-track-index="0" style="position:absolute; inset:0" data-layout-allow-overflow data-layout-allow-occlusion>
+
+        <div id="hook" class="big">The bigger your marketing agency gets, the more <span id="ineff">inefficient</span> it becomes.</div>
+        <div id="brand"><svg viewBox="0 0 32 32"><path id="uPath" d="M7 9v13a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V9" fill="none" stroke="#161b26" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/><circle id="uDot" cx="16" cy="12" r="3" fill="#2a78d6" opacity="0"/></svg><div class="word">headroom</div></div>
+        <div class="demo-label">move · underlineMorph</div>
+      </div>
+    </div>
+    <script src="moves.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set({}, {}, 4.5);
+
+      HRMoves.split("#hook");
+      HRMoves.wordBuild(tl, "#hook", 0.1, { s: 0.08 });
+      const others = Array.prototype.slice.call(document.querySelectorAll("#hook .hr-w")).filter(function (w) { return !w.closest("#ineff"); });
+      // dot lands on the mark's dot: svg 260px at top 690, dot at (16,12) of 32
+      const end = HRMoves.underlineMorph(tl, "#ineff", 1.4, { others: others, dot: { x: 540, y: 690 + 12 * 260 / 32, r: 3 * 260 / 32 } });
+      tl.set("#uDot", { opacity: 1 }, end);
+      tl.set("#uPath", { opacity: 1 }, end - 0.2);
+      tl.to("#uPath", { attr: { "stroke-dashoffset": 0 }, duration: 0.5, ease: "power2.out" }, end - 0.2);
+      HRMoves.blurIn(tl, "#brand .word", end + 0.05);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
